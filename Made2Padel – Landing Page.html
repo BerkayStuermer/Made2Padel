@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Made2Padel – Personalisierte Schlägerprotektoren</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:    #0D1B2A;
+  --navy-m:  #1E3A5F;
+  --gold:    #C9A84C;
+  --gold-l:  #E2C97A;
+  --cream:   #F8F4EC;
+  --cream-d: #E8E0D0;
+  --white:   #FFFFFF;
+  --gray:    #6B7280;
+  --gray-l:  #D1C9BC;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--navy);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 6vw; height: 68px;
+  background: rgba(13,27,42,0.96);
+  backdrop-filter: blur(10px);
+}
+
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 0.02em;
+  opacity: 0;
+  animation: fadeIn 0.6s ease 1.8s forwards;
+}
+
+.nav-logo span { color: var(--gold); }
+
+.nav-link {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: color 0.2s;
+  opacity: 0;
+  animation: fadeIn 0.6s ease 2s forwards;
+}
+.nav-link:hover { color: var(--gold); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  background: var(--navy);
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 6vw 10vh;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gold line animation */
+.hero-line {
+  position: absolute;
+  top: 0; left: 6vw;
+  width: 1px;
+  background: var(--gold);
+  transform-origin: top center;
+  animation: lineGrow 1s cubic-bezier(0.16,1,0.3,1) 0.3s both;
+}
+
+@keyframes lineGrow {
+  from { height: 0; }
+  to   { height: 55vh; }
+}
+
+/* Subtle grid texture */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(201,168,76,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201,168,76,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+/* Soft radial glow top-right */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: -100px; right: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--gold);
+  letter-spacing: 0.18em;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: slideUp 0.7s ease 0.8s forwards;
+}
+
+.hero-headline {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3.2rem, 8vw, 7.5rem);
+  font-weight: 800;
+  line-height: 1.0;
+  color: var(--white);
+  max-width: 14ch;
+  margin-bottom: 2.5rem;
+}
+
+.hero-headline .word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.hero-headline .line-break { display: block; }
+
+.word-1 { animation: wordIn 0.6s cubic-bezier(0.16,1,0.3,1) 0.9s forwards; }
+.word-2 { animation: wordIn 0.6s cubic-bezier(0.16,1,0.3,1) 1.1s forwards; }
+.word-3 { animation: wordIn 0.6s cubic-bezier(0.16,1,0.3,1) 1.3s forwards; color: var(--gold); }
+
+@keyframes wordIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-sub {
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+  font-weight: 300;
+  color: rgba(255,255,255,0.55);
+  max-width: 46ch;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+  opacity: 0;
+  animation: slideUp 0.7s ease 1.6s forwards;
+}
+
+.hero-actions {
+  display: flex; gap: 1.25rem; align-items: center;
+  opacity: 0;
+  animation: slideUp 0.7s ease 1.8s forwards;
+}
+
+.btn-gold {
+  background: var(--gold);
+  color: var(--navy);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 600;
+  font-size: 0.88rem;
+  letter-spacing: 0.04em;
+  padding: 0.9rem 2.2rem;
+  border: none;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-gold:hover { background: var(--gold-l); transform: translateY(-1px); }
+
+.btn-outline {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.88rem;
+  font-weight: 400;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  padding-bottom: 2px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.btn-outline:hover { color: var(--gold); border-color: var(--gold); }
+
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 2.5rem; right: 6vw;
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  opacity: 0;
+  animation: fadeIn 0.7s ease 2.2s forwards;
+}
+
+.scroll-line {
+  width: 1px; height: 48px;
+  background: linear-gradient(to bottom, transparent, var(--gold));
+  animation: scrollPulse 2s ease-in-out 2.5s infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.2); }
+}
+
+.scroll-text {
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.14em;
+  writing-mode: vertical-rl;
+}
+
+/* KEYFRAMES */
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* DIVIDER */
+.gold-divider {
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold) 0%, transparent 60%);
+}
+
+/* INTRO STRIP */
+.intro-strip {
+  background: var(--navy-m);
+  padding: 3rem 6vw;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+  overflow: hidden;
+}
+
+.intro-strip-text {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-weight: 700;
+  color: var(--white);
+  font-style: italic;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.intro-strip-text span { color: var(--gold); font-style: normal; }
+
+/* PROBLEM */
+.problem {
+  padding: 110px 6vw;
+  background: var(--cream);
+}
+
+.section-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.16em;
+  display: flex; align-items: center; gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.section-tag::before {
+  content: '';
+  display: block; width: 28px; height: 1px;
+  background: var(--gold);
+}
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--navy);
+  margin-bottom: 1.5rem;
+}
+
+.problem-body {
+  font-size: 1rem;
+  color: var(--gray);
+  max-width: 52ch;
+  line-height: 1.75;
+  margin-bottom: 3.5rem;
+  font-weight: 300;
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--cream-d);
+  max-width: 840px;
+}
+
+.problem-card {
+  background: var(--cream);
+  padding: 2.25rem 2rem;
+}
+
+.problem-card-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--cream-d);
+  line-height: 1;
+  margin-bottom: 0.75rem;
+}
+
+.problem-card h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+}
+
+.problem-card p {
+  font-size: 0.875rem;
+  color: var(--gray);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* HOW */
+.how {
+  padding: 110px 6vw;
+  background: var(--navy);
+}
+
+.how h2 { color: var(--white); }
+.how .section-tag { margin-bottom: 1rem; }
+.how .problem-body { color: rgba(255,255,255,0.45); margin-bottom: 4rem; }
+
+.steps-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+  background: rgba(255,255,255,0.06);
+  max-width: 900px;
+}
+
+.step-card {
+  background: var(--navy);
+  padding: 2.5rem 2rem;
+  position: relative;
+}
+
+.step-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 2rem;
+  width: 0;
+  height: 2px;
+  background: var(--gold);
+  transition: width 0.4s ease;
+}
+
+.step-card:hover::after { width: calc(100% - 4rem); }
+
+.step-icon {
+  width: 40px; height: 40px;
+  border: 1px solid rgba(201,168,76,0.3);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.step-icon svg { width: 18px; height: 18px; stroke: var(--gold); fill: none; stroke-width: 1.5; }
+
+.step-card h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.6rem;
+}
+
+.step-card p {
+  font-size: 0.875rem;
+  color: rgba(255,255,255,0.4);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* BENEFITS */
+.benefits {
+  padding: 110px 6vw;
+  background: var(--cream);
+}
+
+.benefits-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.benefits-left { position: sticky; top: 100px; }
+.benefits-left h2 { margin-bottom: 1rem; }
+.benefits-left p {
+  font-size: 0.95rem;
+  color: var(--gray);
+  font-weight: 300;
+  line-height: 1.75;
+  max-width: 40ch;
+}
+
+.benefit-list {
+  display: flex; flex-direction: column; gap: 0;
+}
+
+.benefit-item {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--cream-d);
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  transition: background 0.2s;
+}
+
+.benefit-item:first-child { border-top: 1px solid var(--cream-d); }
+
+.benefit-dot {
+  width: 8px; height: 8px;
+  background: var(--gold);
+  border-radius: 50%;
+  margin-top: 0.45rem;
+  justify-self: center;
+}
+
+.benefit-item h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.35rem;
+}
+
+.benefit-item p {
+  font-size: 0.875rem;
+  color: var(--gray);
+  line-height: 1.65;
+  font-weight: 300;
+}
+
+/* QUALITY */
+.quality {
+  padding: 110px 6vw;
+  background: var(--navy-m);
+}
+
+.quality h2 { color: var(--white); margin-bottom: 1rem; }
+.quality .problem-body { color: rgba(255,255,255,0.45); max-width: 54ch; }
+
+.quality-features {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: rgba(255,255,255,0.05);
+  margin-top: 3.5rem;
+}
+
+.qf {
+  background: var(--navy-m);
+  padding: 2rem 1.5rem;
+}
+
+.qf-bar {
+  width: 100%; height: 2px;
+  background: var(--cream-d);
+  margin-bottom: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.qf-bar::after {
+  content: '';
+  position: absolute; left: 0; top: 0;
+  height: 100%;
+  background: var(--gold);
+  animation: barFill 1.2s cubic-bezier(0.16,1,0.3,1) 0.3s both;
+}
+
+.qf:nth-child(1) .qf-bar::after { width: 95%; }
+.qf:nth-child(2) .qf-bar::after { width: 90%; animation-delay: 0.5s; }
+.qf:nth-child(3) .qf-bar::after { width: 98%; animation-delay: 0.7s; }
+.qf:nth-child(4) .qf-bar::after { width: 85%; animation-delay: 0.9s; }
+
+@keyframes barFill {
+  from { width: 0; }
+}
+
+.qf h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--white);
+  margin-bottom: 0.4rem;
+}
+
+.qf p {
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.38);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* CONTACT */
+.contact {
+  padding: 110px 6vw;
+  background: var(--cream);
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: start;
+}
+
+.contact-left h2 { margin-bottom: 1rem; }
+.contact-left p {
+  font-size: 0.95rem;
+  color: var(--gray);
+  font-weight: 300;
+  line-height: 1.75;
+  max-width: 42ch;
+  margin-bottom: 2rem;
+}
+
+.contact-note {
+  font-size: 0.8rem;
+  color: var(--gold);
+  font-weight: 500;
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.contact-note::before {
+  content: '';
+  display: block; width: 16px; height: 1px;
+  background: var(--gold);
+}
+
+form { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+
+label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--navy);
+  letter-spacing: 0.06em;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--cream-d);
+  border-radius: 0;
+  background: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: var(--navy);
+  font-weight: 300;
+  transition: border-color 0.2s;
+  appearance: none;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: var(--gold);
+}
+
+textarea { min-height: 120px; resize: vertical; }
+
+.btn-submit {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.88rem;
+  letter-spacing: 0.06em;
+  padding: 1rem 2.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+  align-self: flex-start;
+}
+.btn-submit:hover { background: var(--navy-m); }
+
+.form-success {
+  display: none;
+  font-size: 0.88rem;
+  color: #2d6a4f;
+  font-weight: 500;
+  padding: 0.75rem 0;
+}
+
+/* FOOTER */
+footer {
+  background: var(--navy);
+  padding: 2.5rem 6vw;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+}
+.footer-logo span { color: var(--gold); }
+
+footer p {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.25);
+  font-weight: 300;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .problem-grid { grid-template-columns: 1fr; }
+  .steps-row { grid-template-columns: 1fr; }
+  .benefits-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .benefits-left { position: static; }
+  .quality-features { grid-template-columns: 1fr 1fr; }
+  .contact-layout { grid-template-columns: 1fr; gap: 3rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .intro-strip { gap: 2rem; flex-wrap: wrap; }
+  footer { flex-direction: column; gap: 1rem; text-align: center; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .hero-line { height: 55vh; }
+  .nav-logo, .nav-link, .hero-eyebrow, .hero-sub, .hero-actions, .hero-scroll-indicator { opacity: 1; transform: none; }
+  .hero-headline .word { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Made<span>2</span>Padel</div>
+  <a href="#kontakt" class="nav-link">Muster anfragen</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-line"></div>
+
+  <p class="hero-eyebrow">Personalisierte Schlägerprotektoren für Padelclubs</p>
+
+  <h1 class="hero-headline">
+    <span class="word word-1">Euer</span>
+    <span class="line-break"></span>
+    <span class="word word-2">Club.</span>
+    <span class="line-break"></span>
+    <span class="word word-3">Jeder Schläger.</span>
+  </h1>
+
+  <p class="hero-sub">
+    Kantenschutz mit eurem Logo – robust gefertigt, präzise aufgebracht,
+    ab drei Stück. Für Leihschläger, Merchandise und Club-Branding das
+    auch außerhalb der Halle wirkt.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#kontakt" class="btn-gold">Kostenloses Muster anfragen</a>
+    <a href="#ablauf" class="btn-outline">So funktioniert es</a>
+  </div>
+
+  <div class="hero-scroll-indicator">
+    <div class="scroll-line"></div>
+    <span class="scroll-text">scrollen</span>
+  </div>
+</section>
+
+<div class="gold-divider"></div>
+
+<!-- INTRO STRIP -->
+<div class="intro-strip">
+  <div class="intro-strip-text">Personalisiert &nbsp;<span>–</span>&nbsp; Langlebig &nbsp;<span>–</span>&nbsp; Ab 3 Stück &nbsp;<span>–</span>&nbsp; Euer Logo &nbsp;<span>–</span>&nbsp; Fertig geliefert</div>
+  <div class="intro-strip-text" aria-hidden="true">Personalisiert &nbsp;<span>–</span>&nbsp; Langlebig &nbsp;<span>–</span>&nbsp; Ab 3 Stück &nbsp;<span>–</span>&nbsp; Euer Logo &nbsp;<span>–</span>&nbsp; Fertig geliefert</div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="section-tag">Das Problem</div>
+  <h2>Standard-Protektoren<br>hinterlassen keinen Eindruck</h2>
+  <p class="problem-body">
+    Jeder Padelclub hat Leihschläger. Fast keiner hat darüber nachgedacht,
+    was der Kantenschutz darauf kommuniziert – oder eben nicht.
+  </p>
+
+  <div class="problem-grid">
+    <div class="problem-card">
+      <div class="problem-card-num">01</div>
+      <h3>Kein Wiedererkennungswert</h3>
+      <p>Anonymer Kantenschutz ist eine verpasste Chance. Euer Logo könnte auf jedem Schläger sitzen – sichtbar für jeden Gast.</p>
+    </div>
+    <div class="problem-card">
+      <div class="problem-card-num">02</div>
+      <h3>Kein Merchandise-Produkt</h3>
+      <p>Mitglieder kaufen gerne kleine Produkte mit Club-Bezug. Einen personalisierten Protektor für ihren eigenen Schläger noch mehr.</p>
+    </div>
+    <div class="problem-card">
+      <div class="problem-card-num">03</div>
+      <h3>Marketing das aufhört</h3>
+      <p>Euer Branding endet an der Hallentür. Spieler nehmen ihre Schläger mit – euer Logo könnte überall dabei sein.</p>
+    </div>
+    <div class="problem-card">
+      <div class="problem-card-num">04</div>
+      <h3>Kein personalisiertes Angebot</h3>
+      <p>Der Markt bietet Kantenschutz von der Stange. Personalisiert mit Club-Logo gab es bisher nicht. Das ändern wir.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="ablauf">
+  <div class="section-tag">Ablauf</div>
+  <h2 style="color:var(--white)">Drei Schritte.<br>Fertig.</h2>
+  <p class="problem-body">Ihr schickt uns euer Logo – wir übernehmen den Rest.</p>
+
+  <div class="steps-row">
+    <div class="step-card">
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+      </div>
+      <h3>Logo einsenden</h3>
+      <p>Ihr schickt uns euer Club-Logo per E-Mail. Kein Designaufwand, keine Vorbereitung nötig.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+      </div>
+      <h3>Produktion</h3>
+      <p>DTF-Druck mit anschließender Laminierung – präzise, farbecht und beständig gegen tägliche Beanspruchung.</p>
+    </div>
+    <div class="step-card">
+      <div class="step-icon">
+        <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <h3>Lieferung</h3>
+      <p>Fertige Protektoren, direkt einsatzbereit. Für Leihschläger, Verkauf oder beides.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="benefits" id="vorteile">
+  <div class="benefits-layout">
+    <div class="benefits-left">
+      <div class="section-tag">Warum Made2Padel</div>
+      <h2>Mehr als<br>Kantenschutz</h2>
+      <p>Ein kleines Produkt mit großer Wirkung – für euren Club, eure Mitglieder und euer Branding.</p>
+    </div>
+    <div class="benefit-list">
+      <div class="benefit-item">
+        <div class="benefit-dot"></div>
+        <div>
+          <h3>Professionelle Leihschläger</h3>
+          <p>Euer Club-Logo auf jedem Leihschläger. Ein Detail das Gästen sofort zeigt, dass hier Wert auf Qualität gelegt wird.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-dot"></div>
+        <div>
+          <h3>Merchandise für Mitglieder</h3>
+          <p>Ein bezahlbares Produkt das Mitglieder gerne kaufen – für ihren eigenen Schläger oder als Geschenk.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-dot"></div>
+        <div>
+          <h3>Sichtbarkeit außerhalb der Halle</h3>
+          <p>Spieler nehmen ihre Schläger mit in Parks, auf andere Anlagen, auf Instagram. Euer Logo ist dabei.</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-dot"></div>
+        <div>
+          <h3>Ab drei Stück – kein Risiko</h3>
+          <p>Keine großen Mindestmengen. Testet das Produkt mit einem kleinen Set, bevor ihr skaliert.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUALITY -->
+<section class="quality" id="qualitaet">
+  <div class="section-tag">Qualität</div>
+  <h2>Gemacht um zu halten</h2>
+  <p class="problem-body">
+    Wir setzen auf DTF-Druck mit Laminierung – nicht weil es günstig ist,
+    sondern weil es die haltbarste Methode für diesen Anwendungsfall ist.
+  </p>
+  <div class="quality-features">
+    <div class="qf">
+      <div class="qf-bar"></div>
+      <h3>Schärfe</h3>
+      <p>DTF-Druck gibt auch feine Logodetails gestochen scharf wieder.</p>
+    </div>
+    <div class="qf">
+      <div class="qf-bar"></div>
+      <h3>Farbechtheit</h3>
+      <p>Laminierung schützt die Farben vor UV und Abrieb dauerhaft.</p>
+    </div>
+    <div class="qf">
+      <div class="qf-bar"></div>
+      <h3>Haftung</h3>
+      <p>Optimiert für die Materialien gängiger Padelschläger-Rahmen.</p>
+    </div>
+    <div class="qf">
+      <div class="qf-bar"></div>
+      <h3>Beständigkeit</h3>
+      <p>Auch bei täglichem Einsatz und Bodenkontakt dauerhaft stabil.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="kontakt">
+  <div class="contact-layout">
+    <div class="contact-left">
+      <div class="section-tag">Kontakt</div>
+      <h2>Kostenloses<br>Muster anfragen</h2>
+      <p>
+        Wir produzieren ein Testmuster mit eurem Logo – unverbindlich,
+        damit ihr das Produkt in der Hand haltet bevor ihr entscheidet.
+      </p>
+      <div class="contact-note">Antwort innerhalb von 24 Stunden</div>
+    </div>
+
+    <form onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div>
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Max Mustermann" required>
+        </div>
+        <div>
+          <label for="club">Clubname</label>
+          <input type="text" id="club" placeholder="Padel Club Münster" required>
+        </div>
+      </div>
+      <div>
+        <label for="email">E-Mail</label>
+        <input type="email" id="email" placeholder="kontakt@euerclub.de" required>
+      </div>
+      <div>
+        <label for="menge">Ungefähre Stückzahl</label>
+        <select id="menge">
+          <option value="">Bitte auswählen</option>
+          <option>3 – 10 Stück</option>
+          <option>10 – 30 Stück</option>
+          <option>30 – 50 Stück</option>
+          <option>50+ Stück</option>
+        </select>
+      </div>
+      <div>
+        <label for="nachricht">Nachricht (optional)</label>
+        <textarea id="nachricht" placeholder="Habt ihr bereits ein Logo? Besondere Anforderungen?"></textarea>
+      </div>
+      <button type="submit" class="btn-submit">Muster anfragen</button>
+      <div class="form-success" id="form-success">
+        Danke – wir melden uns innerhalb von 24 Stunden.
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Made<span>2</span>Padel</div>
+  <p>© 2025 Made2Padel · Münster · info@made2padel.de</p>
+</footer>
+
+<script>
+function handleSubmit(e) {
+  e.preventDefault();
+  const s = document.getElementById('form-success');
+  s.style.display = 'block';
+  e.target.reset();
+  setTimeout(() => { s.style.display = 'none'; }, 6000);
+}
+</script>
+
+</body>
+</html>
