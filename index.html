@@ -302,6 +302,27 @@ textarea { min-height: 130px; resize: vertical; }
 }
 .btn-submit:hover { background: var(--white); transform: translateY(-2px); }
 
+form[hidden], .form-done[hidden] { display: none; }
+.btn-submit:disabled { opacity: .6; cursor: wait; transform: none; }
+.form-status { font-size: .9rem; color: #ff8a80; min-height: 1.2em; }
+.form-done {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 16px;
+  padding: 3rem 2.5rem; text-align: left; animation: fadeUp .6s cubic-bezier(.16,1,.3,1) both;
+}
+.form-done:focus { outline: none; }
+.form-done svg { width: 64px; height: 64px; margin-bottom: 1.5rem; }
+.form-done circle { fill: none; stroke: var(--lime); stroke-width: 3; stroke-dasharray: 190; stroke-dashoffset: 190; animation: dash .7s ease .1s forwards; }
+.form-done path { fill: none; stroke: var(--lime); stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 50; stroke-dashoffset: 50; animation: dash .45s ease .7s forwards; }
+@keyframes dash { to { stroke-dashoffset: 0; } }
+.form-done h3 { font-stretch: 125%; font-weight: 800; font-size: 1.8rem; margin-bottom: .6rem; }
+.form-done p { color: var(--gray-l); font-weight: 300; margin-bottom: 1.75rem; }
+.btn-line-sm {
+  background: none; border: 1px solid #3a3a3a; color: var(--white); font-family: inherit;
+  font-size: .9rem; font-weight: 600; padding: .75rem 1.4rem; border-radius: 999px; cursor: pointer;
+  transition: border-color .2s, color .2s;
+}
+.btn-line-sm:hover { border-color: var(--lime); color: var(--lime); }
+
 /* ---------- Footer ---------- */
 footer {
   border-top: 1px solid var(--line); padding: 2.5rem 6vw;
@@ -514,7 +535,7 @@ footer p { color: var(--gray); font-size: .85rem; }
       <p class="contact-note reveal" style="--d:.3s">Antwort innerhalb von 24 Stunden</p>
     </div>
 
-    <form class="reveal from-right" action="https://formspree.io/f/mnpnoowo" method="POST">
+    <form class="reveal from-right" id="contactForm" action="https://formspree.io/f/mnpnoowo" method="POST">
       <div class="form-row">
         <div>
           <label for="name">Name</label>
@@ -544,9 +565,15 @@ footer p { color: var(--gray); font-size: .85rem; }
         <textarea id="nachricht" name="nachricht" placeholder="Habt ihr bereits ein Logo? Besondere Anforderungen?"></textarea>
       </div>
       <input type="hidden" name="_subject" value="Neue Muster-Anfrage – Made2Padel">
-      <input type="hidden" name="_next" value="https://made2padel.de">
-      <button type="submit" class="btn-submit">Muster anfragen</button>
+      <button type="submit" class="btn-submit" id="submitBtn">Muster anfragen</button>
+      <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
     </form>
+    <div class="form-done" id="formDone" tabindex="-1" hidden>
+      <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="30"/><path d="M19 33l9 9 17-19"/></svg>
+      <h3>Anfrage gesendet</h3>
+      <p>Danke! Wir melden uns innerhalb von 24 Stunden bei euch.</p>
+      <button type="button" class="btn-line-sm" id="againBtn">Weitere Anfrage senden</button>
+    </div>
   </div>
 </section>
 
@@ -560,6 +587,28 @@ footer p { color: var(--gray); font-size: .85rem; }
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   const clamp = (v, a = 0, b = 1) => Math.min(b, Math.max(a, v));
   const seg = (p, a, b) => clamp((p - a) / (b - a));
+
+  /* contact form: send in background, stay on page */
+  const form = document.getElementById('contactForm');
+  const done = document.getElementById('formDone');
+  const statusEl = document.getElementById('formStatus');
+  const btn = document.getElementById('submitBtn');
+  form.addEventListener('submit', async (ev) => {
+    ev.preventDefault();
+    statusEl.textContent = '';
+    btn.disabled = true; btn.textContent = 'Wird gesendet …';
+    try {
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' } });
+      if (!res.ok) throw new Error();
+      form.reset();
+      form.hidden = true; done.hidden = false; done.focus();
+    } catch (e) {
+      statusEl.textContent = 'Die Anfrage konnte nicht gesendet werden. Bitte versucht es erneut oder schreibt an info@made2padel.de.';
+    } finally {
+      btn.disabled = false; btn.textContent = 'Muster anfragen';
+    }
+  });
+  document.getElementById('againBtn').addEventListener('click', () => { done.hidden = true; form.hidden = false; form.querySelector('input').focus(); });
 
   /* build racket holes */
   const holes = document.getElementById('holes');
