@@ -4,9 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Made2Padel – Personalisierte Schlägerprotektoren</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Caveat+Brush&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="fonts.css">
+<meta name="description" content="Personalisierte Schlägerprotektoren mit eurem Club-Logo für Padelclubs. Robust, langlebig, ab 3 Stück. Aus Münster.">
 <style>
 :root {
   --black: #050505;
@@ -330,6 +329,11 @@ footer {
 }
 footer p { color: var(--gray); font-size: .85rem; }
 
+.form-privacy { font-size: .8rem; color: var(--gray); max-width: 52ch; }
+.form-privacy a, .legal-links a { color: var(--gray-l); text-decoration: underline; text-underline-offset: 3px; }
+.form-privacy a:hover, .legal-links a:hover { color: var(--lime); }
+.legal-links { display: flex; gap: 1.5rem; font-size: .85rem; }
+
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; padding-top: 110px; }
@@ -566,6 +570,7 @@ footer p { color: var(--gray); font-size: .85rem; }
       </div>
       <input type="hidden" name="_subject" value="Neue Muster-Anfrage – Made2Padel">
       <button type="submit" class="btn-submit" id="submitBtn">Muster anfragen</button>
+      <p class="form-privacy">Eure Angaben nutzen wir nur, um eure Anfrage zu beantworten. Mehr dazu in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
       <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
     </form>
     <div class="form-done" id="formDone" tabindex="-1" hidden>
@@ -579,7 +584,8 @@ footer p { color: var(--gray); font-size: .85rem; }
 
 <footer>
   <a href="#top" class="wordmark" aria-label="Made2Padel">made<span class="two">2</span>padel</a>
-  <p>© 2026 Made2Padel, Münster, info@made2padel.de</p>
+  <p>© 2026 Made2Padel, Münster</p>
+  <div class="legal-links"><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></div>
 </footer>
 
 <script>
