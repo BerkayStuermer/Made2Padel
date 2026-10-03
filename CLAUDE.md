@@ -1,0 +1,11 @@
+# Made2Padel – Projektregeln
+- Statische Website, gehostet über GitHub Pages unter made2padel.de. Kein Build-Prozess, reines HTML/CSS/JS.
+- Alle Texte auf Deutsch, Ansprache der Clubs mit "ihr".
+- Design: Schwarz #050505, Panel #161616, Lime #C5E334, Weiß. Überschriften in Archivo (breit), Schriftzug "made2padel" in Caveat Brush.
+- Schriften NUR lokal über fonts.css einbinden. Keine Google Fonts, keine externen Skripte oder Bilder (Datenschutz).
+- Das Dropdown-Menü existiert in jeder HTML-Datei. Änderungen am Menü immer in ALLEN Seiten gleich übernehmen.
+- Formulare senden per fetch an https://formspree.io/f/mnpnoowo und enthalten das versteckte Honeypot-Feld _gotcha. Nicht entfernen.
+- Grün markierte Platzhalter haben die Klasse "ph". Keine Fakten über das Produkt oder die Gründer erfinden; Unbekanntes als Platzhalter lassen.
+- Unterseiten haben noindex, bis ihre Platzhalter gefüllt sind.
+- Die Datei CNAME niemals ändern oder löschen.
+- Nach jeder Änderung prüfen, dass die Seite auch auf dem Handy (ca. 390 px Breite) funktioniert.
