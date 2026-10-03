@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
-<title>Seite nicht gefunden – Made2Padel</title>
-<link rel="stylesheet" href="/fonts.css">
+<title>Über uns – Made2Padel</title>
+<link rel="stylesheet" href="fonts.css">
 <style>
 :root { --black:#050505; --panel:#161616; --panel-2:#1e1e1e; --line:#262626; --lime:#C5E334; --white:#fff; --gray:#8A8A8A; --gray-l:#C8C8C8;
   color-scheme: dark; box-sizing: border-box;
@@ -40,16 +40,26 @@ section { margin-top: 5rem; }
 footer { border-top: 1px solid var(--line); padding: 2rem 6vw; display: flex; gap: 1.5rem; flex-wrap: wrap; font-size: .85rem; }
 footer a { color: var(--gray-l); }
 
-.err { min-height: calc(100vh - 140px); min-height: calc(100svh - 140px); display: grid; place-items: center; text-align: center; padding: 3rem 6vw; }
-.court { width: min(420px, 80vw); margin: 0 auto 2rem; overflow: visible; }
-.court .lines { fill: none; stroke: #3a3a3a; stroke-width: 2; }
-.court .net { stroke: var(--white); stroke-width: 3; stroke-dasharray: 4 6; }
-.ball404 { animation: out 2.4s cubic-bezier(.3,.1,.4,1) infinite; transform-origin: center; }
-@keyframes out { 0% { transform: translate(-150px, 60px) scale(.8); opacity: 0; } 15% { opacity: 1; } 55% { transform: translate(40px, -40px) scale(1.1); } 80% { transform: translate(190px, -110px) scale(.7); opacity: 1; } 100% { transform: translate(230px, -140px) scale(.6); opacity: 0; } }
-.code { font-stretch: 125%; font-weight: 800; font-size: clamp(4rem, 14vw, 8rem); line-height: 1; color: var(--lime); }
-.err h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); margin: .5rem 0 1rem; }
-.err p { color: var(--gray-l); font-weight: 300; max-width: 42ch; margin: 0 auto 2rem; }
-.err .row { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.team { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2.5rem; }
+.person { background: var(--panel); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
+.photo { aspect-ratio: 4/3; display: grid; place-items: center; background: radial-gradient(circle at 50% 70%, rgba(197,227,52,.14), transparent 60%), var(--panel-2); position: relative; }
+.initials { width: 110px; height: 110px; border-radius: 50%; border: 2px solid var(--lime); display: grid; place-items: center; font-stretch: 125%; font-weight: 800; font-size: 2.2rem; color: var(--lime); }
+.photo small { position: absolute; bottom: .9rem; font-size: .75rem; }
+.person-body { padding: 1.5rem; }
+.role { color: var(--lime); font-size: .85rem; font-weight: 600; margin-bottom: .6rem; }
+.person p { color: var(--gray-l); font-weight: 300; font-size: .95rem; }
+.story { display: grid; grid-template-columns: 1fr 1.3fr; gap: 4rem; align-items: start; }
+.story-text p { color: var(--gray-l); font-weight: 300; margin-bottom: 1rem; }
+.timeline { list-style: none; border-left: 2px solid var(--line); margin-left: .5rem; }
+.timeline li { position: relative; padding: 0 0 2rem 1.75rem; }
+.timeline li::before { content: ''; position: absolute; left: -7px; top: .35rem; width: 12px; height: 12px; border-radius: 50%; background: var(--black); border: 2px solid var(--lime); }
+.timeline li.now::before { background: var(--lime); box-shadow: 0 0 0 6px rgba(197,227,52,.18); }
+.timeline .when { font-size: .8rem; color: var(--gray); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.timeline p { color: var(--gray-l); font-weight: 300; font-size: .95rem; }
+.values { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+.value { border-top: 2px solid var(--lime); padding-top: 1.25rem; }
+.value p { color: var(--gray); font-weight: 300; font-size: .95rem; }
+@media (max-width: 760px) { .team, .story, .values { grid-template-columns: 1fr; } .story { gap: 2.5rem; } .cta { padding: 2rem 1.5rem; } }
 
 
 .nav-right { display: flex; align-items: center; gap: .9rem; }
@@ -88,31 +98,70 @@ footer a { color: var(--gray-l); }
 </head>
 <body>
 <header class="top">
-  <a href="/index.html" class="wordmark" aria-label="Made2Padel Startseite">made<span>2</span>padel</a>
+  <a href="index.html" class="wordmark" aria-label="Made2Padel Startseite">made<span>2</span>padel</a>
   <div class="nav-right"><div class="menu" id="menu">
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuList">Menü<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
-      <ul class="menu-list" id="menuList" role="list"><li><a href="/index.html"><span class="mi">Startseite</span><span class="md">Zurück zum Anfang</span></a></li><li><a href="/shop.html"><span class="mi">Shop</span><span class="md">Zubehör mit eurem Logo</span></a></li><li><a href="/ueber-uns.html"><span class="mi">Über uns</span><span class="md">Wer hinter Made2Padel steckt</span></a></li><li><a href="/faq.html"><span class="mi">FAQ</span><span class="md">Häufige Fragen</span></a></li><li><a href="/logo-anleitung.html"><span class="mi">Logo-Anleitung</span><span class="md">So schickt ihr uns euer Logo</span></a></li></ul>
-    </div><a href="/index.html#kontakt" class="nav-cta">Muster anfragen</a></div>
+      <ul class="menu-list" id="menuList" role="list"><li><a href="index.html"><span class="mi">Startseite</span><span class="md">Zurück zum Anfang</span></a></li><li><a href="shop.html"><span class="mi">Shop</span><span class="md">Zubehör mit eurem Logo</span></a></li><li><a href="ueber-uns.html" aria-current="page"><span class="mi">Über uns</span><span class="md">Wer hinter Made2Padel steckt</span></a></li><li><a href="faq.html"><span class="mi">FAQ</span><span class="md">Häufige Fragen</span></a></li><li><a href="logo-anleitung.html"><span class="mi">Logo-Anleitung</span><span class="md">So schickt ihr uns euer Logo</span></a></li></ul>
+    </div><a href="index.html#kontakt" class="nav-cta">Muster anfragen</a></div>
 </header>
 
-<main class="err">
-  <div>
-    <svg class="court" viewBox="0 0 400 200" aria-hidden="true">
-      <rect class="lines" x="10" y="20" width="380" height="170" rx="4"/>
-      <line class="lines" x1="200" y1="20" x2="200" y2="190" style="stroke:none"/>
-      <line class="lines" x1="70" y1="20" x2="70" y2="190"/><line class="lines" x1="330" y1="20" x2="330" y2="190"/>
-      <line class="lines" x1="70" y1="105" x2="330" y2="105"/>
-      <line class="net" x1="200" y1="10" x2="200" y2="200"/>
-      <g class="ball404"><circle cx="200" cy="105" r="13" fill="#C5E334"/><path d="M190 96 C196 102 196 108 190 114 M210 96 C204 102 204 108 210 114" stroke="#050505" stroke-width="2" fill="none"/></g>
-    </svg>
-    <div class="code">404</div>
-    <h1>Der Ball war im Aus.</h1>
-    <p>Diese Seite gibt es leider nicht. Vielleicht hat sich ein Tippfehler in die Adresse geschlichen, oder die Seite ist umgezogen.</p>
-    <div class="row"><a href="/index.html" class="btn">Zur Startseite</a><a href="/index.html#kontakt" class="btn-line">Kontakt aufnehmen</a></div>
+<main class="wrap">
+  <div class="kicker reveal">Über uns</div>
+  <h1 class="reveal" style="--d:.05s">Zwei Gründer<br>aus Münster</h1>
+  <p class="lead reveal" style="--d:.1s">Hinter Made2Padel stehen Berkay und Ryan. Wir sind ein junges Team und wollen Clubs ein Produkt bieten, das ihren Namen auf jeden Schläger bringt. <span class="ph">Optional: euer persönlicher Bezug zu Padel in einem Satz.</span></p>
+
+  <div class="team">
+    <article class="person reveal">
+      <div class="photo"><div class="initials">BS</div><small class="ph">Foto von Berkay</small></div>
+      <div class="person-body">
+        <h3>Berkay Stürmer</h3>
+        <div class="role">Mitgründer · <span class="ph">Rolle, z. B. Produktion & Technik</span></div>
+        <p><span class="ph">2–3 Sätze: Studium, seit wann du Padel spielst, was du bei Made2Padel machst.</span></p>
+      </div>
+    </article>
+    <article class="person reveal" style="--d:.12s">
+      <div class="photo"><div class="initials">RC</div><small class="ph">Foto von Ryan</small></div>
+      <div class="person-body">
+        <h3>Ryan Chwaltzyk</h3>
+        <div class="role">Mitgründer · <span class="ph">Rolle, z. B. Vertrieb & Kunden</span></div>
+        <p><span class="ph">2–3 Sätze: Hintergrund, Bezug zu Padel, was Ryan bei Made2Padel macht.</span></p>
+      </div>
+    </article>
+  </div>
+
+  <section class="story">
+    <div class="reveal">
+      <div class="kicker">Unsere Geschichte</div>
+      <h2>Wie aus einer Idee am Court Made2Padel wurde</h2>
+    </div>
+    <div class="story-text reveal" style="--d:.1s">
+      <p><span class="ph">Wie seid ihr auf die Idee gekommen? Zum Beispiel: Was ist euch an Leihschlägern oder Protektoren aufgefallen?</span></p>
+      <ul class="timeline">
+        <li><div class="when"><span class="ph">Monat Jahr</span></div><h3>Die Idee</h3><p><span class="ph">Kurz beschreiben, wann und wo.</span></p></li>
+        <li><div class="when"><span class="ph">Monat Jahr</span></div><h3>Erste Gespräche mit Clubs</h3><p>Wir haben bei Padelclubs in der Region nachgefragt, ob personalisierte Protektoren für sie interessant sind.</p></li>
+        <li class="now"><div class="when">Jetzt</div><h3>Die ersten Muster</h3><p>Wir produzieren die ersten Protektoren und suchen Clubs, die sie mit uns testen möchten.</p></li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="kicker reveal">Wofür wir stehen</div>
+    <h2 class="reveal">Was euch bei uns erwartet</h2>
+    <div class="values">
+      <div class="value reveal"><h3>Persönlich</h3><p>Ihr sprecht direkt mit uns, nicht mit einer Hotline. Jede Anfrage beantworten wir selbst.</p></div>
+      <div class="value reveal" style="--d:.1s"><h3>Sorgfältig</h3><p>Bevor wir drucken, bekommt ihr eine Vorschau mit eurem Logo und gebt sie frei. Erst dann geht es in die Produktion.</p></div>
+      <div class="value reveal" style="--d:.2s"><h3>Aus der Region</h3><p>Wir sitzen in Münster und konzentrieren uns zuerst auf Clubs in der Umgebung, damit wir nah dran sind.</p></div>
+    </div>
+  </section>
+
+  <div class="cta reveal">
+    <h2>Lust, mit uns zu starten?</h2>
+    <p>Wir suchen Clubs, die unsere Protektoren als Erste testen. Schreibt uns einfach.</p>
+    <a href="index.html#kontakt" class="btn">Muster anfragen</a>
   </div>
 </main>
 
-<footer><a href="/index.html">Startseite</a><a href="/impressum.html">Impressum</a><a href="/datenschutz.html">Datenschutz</a></footer>
+<footer><a href="index.html">Startseite</a><a href="impressum.html">Impressum</a><a href="datenschutz.html">Datenschutz</a></footer>
 <script>
 (function(){
   if (!('IntersectionObserver' in window)) { document.querySelectorAll('.reveal').forEach(e=>e.classList.add('in')); return; }
