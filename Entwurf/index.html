@@ -91,37 +91,79 @@
   </div>
 </div>
 
-<!-- PRODUKT -->
-<section class="section" id="produkt">
-  <div class="container">
-    <div class="section-head reveal">
-      <p class="kicker">Das Produkt</p>
-      <h2 class="h2">Vom Schläger zum <em>Markenzeichen</em></h2>
-    </div>
-    <ol class="story" role="list" style="list-style:none">
-      <li class="story__card reveal">
-        <svg class="racket" viewBox="0 0 400 620" aria-hidden="true"><use href="#racket-base"/></svg>
-        <p class="story__step">Schritt 1 von 3</p>
-        <h3>Der Schläger eurer Mitglieder</h3>
-        <p>Jeden Tag im Einsatz, jeden Tag mit Bodenkontakt. Der Rahmen braucht Schutz.</p>
-      </li>
-      <li class="story__card reveal" style="--d:.1s">
-        <svg class="racket" viewBox="0 0 400 620" aria-hidden="true"><use href="#racket-base"/><path class="guard" d="M 56.3 170 A 150 175 0 0 1 343.7 170"/></svg>
-        <p class="story__step">Schritt 2 von 3</p>
-        <h3>Unser Kantenschutz</h3>
-        <p>Robust, passgenau und laminiert – schützt den Rahmen vor Abrieb und Stößen.</p>
-      </li>
-      <li class="story__card reveal" style="--d:.2s">
-        <svg class="racket" viewBox="0 0 400 620" aria-hidden="true">
-          <defs><path id="storyGuard" d="M 56.3 170 A 150 175 0 0 1 343.7 170"/></defs>
-          <use href="#racket-base"/><use href="#storyGuard" class="guard"/>
-          <text class="guard-text" dy="6"><textPath href="#storyGuard" startOffset="50%" text-anchor="middle">made2padel  •  euer club  •  made2padel</textPath></text>
+<!-- PRODUKT: scrollgesteuerter Zoom vom Court auf den Kantenschutz -->
+<section class="zoom" id="produkt" aria-labelledby="zoomTitle">
+  <div class="zoom__stage">
+    <div class="zoom__scene" aria-hidden="true">
+      <div class="zoom__world" id="zoomWorld">
+        <svg class="zoom__court" id="zoomCourt" viewBox="-60 -60 1120 2120">
+          <!-- Glaswände: Rückwände komplett, Seiten je 4 m Glas, dazwischen Gitter -->
+          <g class="glass">
+            <rect x="-44" y="-44" width="1088" height="30" rx="4"/>
+            <rect x="-44" y="2014" width="1088" height="30" rx="4"/>
+            <rect x="-44" y="-14" width="30" height="414" rx="4"/>
+            <rect x="1014" y="-14" width="30" height="414" rx="4"/>
+            <rect x="-44" y="1600" width="30" height="414" rx="4"/>
+            <rect x="1014" y="1600" width="30" height="414" rx="4"/>
+          </g>
+          <g class="mesh">
+            <line x1="-29" y1="410" x2="-29" y2="1590"/>
+            <line x1="1029" y1="410" x2="1029" y2="1590"/>
+          </g>
+          <rect class="surface" x="0" y="0" width="1000" height="2000"/>
+          <g class="lines">
+            <rect x="0" y="0" width="1000" height="2000"/>
+            <line x1="0" y1="305" x2="1000" y2="305"/>
+            <line x1="0" y1="1695" x2="1000" y2="1695"/>
+            <line x1="500" y1="305" x2="500" y2="1695"/>
+          </g>
+          <g class="net">
+            <line class="net__band" x1="-20" y1="1000" x2="1020" y2="1000"/>
+            <line class="net__mesh" x1="0" y1="1000" x2="1000" y2="1000"/>
+            <rect x="-34" y="988" width="24" height="24" rx="4"/>
+            <rect x="1010" y="988" width="24" height="24" rx="4"/>
+          </g>
+          <g class="court-ball">
+            <circle cx="290" cy="560" r="15"/>
+            <path d="M279 550c6 5 6 15 0 20M301 550c-6 5-6 15 0 20"/>
+          </g>
         </svg>
-        <p class="story__step">Schritt 3 von 3</p>
-        <h3>Mit eurem Logo darauf</h3>
-        <p>Aus einem Schutz wird ein Markenzeichen. Auf jedem Leihschläger, auf jedem Foto.</p>
-      </li>
-    </ol>
+
+        <svg class="zoom__racket" viewBox="0 0 400 620">
+          <defs><path id="zoomGuard" d="M 56.3 170 A 150 175 0 0 1 343.7 170"/></defs>
+          <use href="#racket-base"/>
+          <use href="#zoomGuard" class="guard-off"/>
+          <g class="zoom__lit" id="zoomLit">
+            <use href="#zoomGuard" class="guard-glow"/>
+            <use href="#zoomGuard" class="guard"/>
+          </g>
+          <text class="guard-logo" id="zoomLogo" dy="6.5"><textPath href="#zoomGuard" startOffset="50%" text-anchor="middle">made2padel</textPath></text>
+        </svg>
+      </div>
+    </div>
+
+    <div class="zoom__copy" id="zoomCopy">
+      <p class="kicker">Das Produkt</p>
+      <h2 class="sr-only" id="zoomTitle">Vom Schläger zum Markenzeichen</h2>
+      <div class="zoom__texts">
+        <div class="zoom__text">
+          <p class="zoom__step">Schritt 1 von 3</p>
+          <h3>Der Schläger eurer Mitglieder</h3>
+          <p>Jeden Tag im Einsatz, jeden Tag mit Bodenkontakt. Der Rahmen braucht Schutz.</p>
+        </div>
+        <div class="zoom__text">
+          <p class="zoom__step">Schritt 2 von 3</p>
+          <h3>Unser Kantenschutz</h3>
+          <p>Robust, passgenau und laminiert – schützt den Rahmen vor Abrieb und Stößen.</p>
+        </div>
+        <div class="zoom__text">
+          <p class="zoom__step">Schritt 3 von 3</p>
+          <h3>Mit eurem Logo darauf</h3>
+          <p>Aus einem Schutz wird ein Markenzeichen. Auf jedem Leihschläger, auf jedem Foto.</p>
+        </div>
+      </div>
+      <div class="zoom__progress" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i></div>
+    </div>
   </div>
 </section>
 
@@ -316,6 +358,132 @@
     entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
   }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
   items.forEach(function (el) { io.observe(el); });
+})();
+</script>
+<script>
+/* Scroll-Zoom: Court → Schläger → Kantenschutz mit Logo.
+   Der Scrollfortschritt des Abschnitts (0–1) steuert eine „Kamera“ (transform auf .zoom__world).
+   Bewusst nur 2D-Transforms und kein will-change, damit Safari die SVGs bei jedem Zoomschritt neu
+   und damit scharf rastert. */
+(function () {
+  var section = document.getElementById('produkt');
+  if (!section) return;
+  var stage = section.querySelector('.zoom__stage');
+  var scene = section.querySelector('.zoom__scene');
+  var world = document.getElementById('zoomWorld');
+  var court = document.getElementById('zoomCourt');
+  var lit = document.getElementById('zoomLit');
+  var logo = document.getElementById('zoomLogo');
+  var copy = document.getElementById('zoomCopy');
+  var texts = section.querySelectorAll('.zoom__text');
+  var bars = section.querySelectorAll('.zoom__progress b');
+  var reduceMq = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* Welt = Court-viewBox (-60 -60 1120 2120) in CSS-Pixeln, Ursprung oben links */
+  var WORLD_W = 1120, WORLD_H = 2120;
+  /* Schläger liegt auf der unteren Courthälfte: Mittelpunkt, Drehung, Maßstab (viewBox 400×620) */
+  var R = { x: 700, y: 1500, rot: -25, scale: 0.5 };
+  var rk = section.querySelector('.zoom__racket');
+  rk.style.width = 400 * R.scale + 'px';
+  rk.style.height = 620 * R.scale + 'px';
+  rk.style.left = R.x - 200 * R.scale + 'px';
+  rk.style.top = R.y - 310 * R.scale + 'px';
+  rk.style.transform = 'rotate(' + R.rot + 'deg)';
+
+  /* Punkt im Schläger-SVG → Weltkoordinaten */
+  function racketPoint(lx, ly) {
+    var a = R.rot * Math.PI / 180;
+    var dx = (lx - 200) * R.scale, dy = (ly - 310) * R.scale;
+    return { x: R.x + dx * Math.cos(a) - dy * Math.sin(a), y: R.y + dx * Math.sin(a) + dy * Math.cos(a) };
+  }
+  var guardTop = racketPoint(200, 100);
+
+  var clamp = function (v) { return v < 0 ? 0 : v > 1 ? 1 : v; };
+  var seg = function (p, a, b) { return clamp((p - a) / (b - a)); };
+  var ease = function (t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; };
+  var lerp = function (a, b, t) { return a + (b - a) * t; };
+
+  var keys = [];      /* Kamera-Keyframes, abhängig von Bühnengröße */
+  function layout() {
+    var w = scene.clientWidth, h = scene.clientHeight, sr = scene.getBoundingClientRect();
+    var navH = 68, desktop = w >= 1024, still = section.classList.contains('zoom--static');
+    var full, focus;   /* full = Bereich für die Court-Übersicht, focus = Bereich für die Nahaufnahmen */
+    if (still) {
+      full = focus = { x: 0, y: 0, w: w, h: h };
+    } else if (desktop) {
+      var x0 = copy.getBoundingClientRect().right - sr.left + 40;
+      full = focus = { x: x0, y: navH, w: w - x0 - 40, h: h - navH };
+    } else {
+      var top = copy.getBoundingClientRect().top - sr.top;
+      /* Handy: Texte liegen unten, Szene nutzt den Bereich darüber */
+      full = focus = { x: 0, y: navH, w: w, h: Math.max(160, top + 24 - navH) };
+    }
+    var cx = function (r) { return r.x + r.w / 2; }, cy = function (r) { return r.y + r.h / 2; };
+    keys = [
+      /* 0: ganzer Court */
+      { cx: cx(full), cy: cy(full), fx: WORLD_W / 2, fy: WORLD_H / 2, rot: 0,
+        s: Math.min(full.w * .9 / WORLD_W, full.h * .92 / WORLD_H) },
+      /* 1: Schläger füllt die Bühne, aufgerichtet */
+      { cx: cx(focus), cy: cy(focus), fx: R.x, fy: R.y, rot: -R.rot,
+        s: Math.min(focus.h * .88 / (620 * R.scale), focus.w * .88 / (400 * R.scale)) },
+      /* 2: Nahaufnahme Kantenschutz */
+      { cx: cx(focus), cy: cy(focus), fx: guardTop.x, fy: guardTop.y, rot: -R.rot,
+        s: Math.min(focus.w * (still ? (desktop ? .82 : 1) : desktop ? .95 : 1.1) / (310 * R.scale), focus.h * .8 / (150 * R.scale)) }
+    ];
+  }
+
+  function camera(a, b, t) {
+    var s = Math.exp(lerp(Math.log(a.s), Math.log(b.s), t));   /* logarithmisch = gleichmäßiger Zoom */
+    return 'translate(' + lerp(a.cx, b.cx, t).toFixed(2) + 'px,' + lerp(a.cy, b.cy, t).toFixed(2) + 'px) ' +
+      'scale(' + s.toFixed(4) + ') rotate(' + lerp(a.rot, b.rot, t).toFixed(2) + 'deg) ' +
+      'translate(' + (-lerp(a.fx, b.fx, t)).toFixed(2) + 'px,' + (-lerp(a.fy, b.fy, t)).toFixed(2) + 'px)';
+  }
+
+  /* Phasen: 0–.10 Court · .10–.45 Zoom auf Schläger · .47–.60 Kantenschutz leuchtet ·
+     .62–.85 Zoom auf Kantenschutz · .76–.88 Logo erscheint */
+  function render(p) {
+    world.style.transform = p < .45
+      ? camera(keys[0], keys[1], ease(seg(p, .10, .45)))
+      : camera(keys[1], keys[2], ease(seg(p, .62, .85)));
+    court.style.opacity = 1 - seg(p, .22, .42);
+    lit.style.opacity = seg(p, .47, .60);
+    logo.style.opacity = seg(p, .76, .88);
+    if (section.classList.contains('zoom--static')) return;   /* ruhiges Endbild: alle Texte sichtbar */
+
+    var vis = [1 - seg(p, .36, .42), Math.min(seg(p, .44, .50), 1 - seg(p, .62, .67)), seg(p, .69, .75)];
+    for (var i = 0; i < texts.length; i++) {
+      texts[i].style.opacity = vis[i];
+      texts[i].style.transform = 'translateY(' + ((1 - vis[i]) * 16).toFixed(1) + 'px)';
+      texts[i].style.visibility = vis[i] > 0.01 ? 'visible' : 'hidden';
+    }
+    bars[0].style.transform = 'scaleX(' + seg(p, 0, .42) + ')';
+    bars[1].style.transform = 'scaleX(' + seg(p, .44, .65) + ')';
+    bars[2].style.transform = 'scaleX(' + seg(p, .69, .88) + ')';
+  }
+
+  function progress() {
+    var total = section.offsetHeight - stage.offsetHeight;
+    return total > 0 ? clamp(-section.getBoundingClientRect().top / total) : 1;
+  }
+
+  var ticking = false;
+  function frame() {
+    ticking = false;
+    render(section.classList.contains('zoom--static') ? 1 : progress());
+  }
+  function request() { if (!ticking) { ticking = true; requestAnimationFrame(frame); } }
+
+  function setMode() {
+    section.classList.toggle('zoom--static', reduceMq.matches);
+    if (reduceMq.matches) texts.forEach(function (t) { t.style.cssText = ''; });
+    layout(); request();
+  }
+
+  window.addEventListener('scroll', request, { passive: true });
+  window.addEventListener('resize', function () { layout(); request(); });
+  if (reduceMq.addEventListener) reduceMq.addEventListener('change', setMode);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { layout(); request(); });
+  setMode();
 })();
 </script>
 </body>
