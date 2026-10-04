@@ -273,12 +273,10 @@ h2.title {
 
 /* ---------- Quality ---------- */
 .quality { background: var(--panel); }
-.q-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; margin-top: 4rem; }
-.q-item h3 { font-size: 1.05rem; font-weight: 700; margin: 1.25rem 0 .4rem; }
+.q-grid { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.5rem; margin-top: 4rem; }
+.q-item { border-top: 2px solid var(--lime); padding-top: 1.25rem; }
+.q-item h3 { font-size: 1.05rem; font-weight: 700; margin: 0 0 .4rem; }
 .q-item p { color: var(--gray); font-size: .9rem; font-weight: 300; }
-.q-bar { height: 4px; background: #2a2a2a; border-radius: 4px; overflow: hidden; }
-.q-bar b { display: block; height: 100%; width: 0; background: var(--lime); border-radius: 4px; transition: width 1.4s cubic-bezier(.16,1,.3,1) var(--d, 0s); }
-.q-item.in .q-bar b { width: var(--w); }
 
 /* ---------- Contact ---------- */
 .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 6vw; align-items: start; }
@@ -379,7 +377,7 @@ footer p { color: var(--gray); font-size: .85rem; }
   .caption h2 { font-size: 1.7rem; }
   .caption p { font-size: .9rem; }
   .wordmark { font-size: 1.6rem; }
-  .nav-cta { font-size: .78rem; padding: .5rem .95rem; }
+  .nav-cta { font-size: .78rem; padding: .5rem .95rem; white-space: normal; max-width: 8.5rem; text-align: center; line-height: 1.15; }
   .menu-btn { font-size: .78rem; padding: .5rem .8rem; }
   .nav-right { gap: .5rem; }
   .menu-list { position: fixed; left: 4vw; right: 4vw; width: auto; top: calc(72px + env(safe-area-inset-top, 0px)); }
@@ -422,7 +420,7 @@ footer p { color: var(--gray); font-size: .85rem; }
           <li><a href="logo-anleitung.html"><span class="mi">Logo-Anleitung</span><span class="md">So schickt ihr uns euer Logo</span></a></li>
         </ul>
       </div>
-      <a href="#kontakt" class="nav-cta">Muster anfragen</a>
+      <a href="#kontakt" class="nav-cta">Unverbindlich anfragen</a>
     </div>
   </div>
 </nav>
@@ -439,7 +437,7 @@ footer p { color: var(--gray); font-size: .85rem; }
     </div>
     <p>Kantenschutz mit eurem Logo – robust gefertigt, präzise aufgebracht, ab drei Stück. Für Leihschläger, Merchandise und Club-Branding das auch außerhalb der Halle wirkt.</p>
     <div class="hero-actions">
-      <a href="#kontakt" class="btn btn-lime">Kostenloses Muster anfragen</a>
+      <a href="#kontakt" class="btn btn-lime">Unverbindlich anfragen</a>
       <a href="#produkt" class="btn btn-line">So entsteht euer Protektor</a>
     </div>
   </div>
@@ -533,7 +531,7 @@ footer p { color: var(--gray); font-size: .85rem; }
     <div class="p-card reveal" style="--d:0s"><h3>Kein Wiedererkennungswert</h3><p>Anonymer Kantenschutz ist eine verpasste Chance. Euer Logo könnte auf jedem Schläger sitzen – sichtbar für jeden Gast.</p></div>
     <div class="p-card reveal" style="--d:.12s"><h3>Kein Merchandise-Produkt</h3><p>Mitglieder kaufen gerne kleine Produkte mit Club-Bezug. Einen personalisierten Protektor für ihren eigenen Schläger noch mehr.</p></div>
     <div class="p-card reveal" style="--d:.24s"><h3>Marketing das aufhört</h3><p>Euer Branding endet an der Hallentür. Spieler nehmen ihre Schläger mit – euer Logo könnte überall dabei sein.</p></div>
-    <div class="p-card reveal" style="--d:.36s"><h3>Kein personalisiertes Angebot</h3><p>Der Markt bietet Kantenschutz von der Stange. Personalisiert mit Club-Logo gab es bisher nicht. Das ändern wir.</p></div>
+    <div class="p-card reveal" style="--d:.36s"><h3>Meist von der Stange</h3><p>Kantenschutz gibt es meist als Standardware ohne Bezug zu eurem Club. Das wollen wir ändern.</p></div>
   </div>
 </section>
 
@@ -545,7 +543,7 @@ footer p { color: var(--gray); font-size: .85rem; }
   <div class="steps" id="steps">
     <div class="steps-line"><b id="stepsFill"></b></div>
     <div class="step-item"><div class="step-num">1</div><h3>Logo einsenden</h3><p>Ihr schickt uns euer Club-Logo per E-Mail. Kein Designaufwand, keine Vorbereitung nötig.</p></div>
-    <div class="step-item"><div class="step-num">2</div><h3>Produktion</h3><p>DTF-Druck mit anschließender Laminierung – präzise, farbecht und beständig gegen tägliche Beanspruchung.</p></div>
+    <div class="step-item"><div class="step-num">2</div><h3>Produktion</h3><p>DTF-Druck mit anschließender Laminierung – für einen präzisen Druck, den die Laminierung zusätzlich vor Abrieb schützt.</p></div>
     <div class="step-item"><div class="step-num">3</div><h3>Lieferung</h3><p>Fertige Protektoren, direkt einsatzbereit. Für Leihschläger, Verkauf oder beides.</p></div>
   </div>
 </section>
@@ -571,13 +569,13 @@ footer p { color: var(--gray); font-size: .85rem; }
 <section class="block quality" id="qualitaet">
   <div class="kicker reveal">Qualität</div>
   <h2 class="title reveal"><span class="mask"><span>Gemacht um zu halten</span></span></h2>
-  <p class="lead reveal" style="--d:.15s">Wir setzen auf DTF-Druck mit Laminierung – nicht weil es günstig ist, sondern weil es die haltbarste Methode für diesen Anwendungsfall ist.</p>
-  <div class="q-grid">
-    <div class="q-item reveal" style="--d:0s;--w:95%"><div class="q-bar"><b></b></div><h3>Schärfe</h3><p>DTF-Druck gibt auch feine Logodetails gestochen scharf wieder.</p></div>
-    <div class="q-item reveal" style="--d:.12s;--w:90%"><div class="q-bar"><b></b></div><h3>Farbechtheit</h3><p>Laminierung schützt die Farben vor UV und Abrieb dauerhaft.</p></div>
-    <div class="q-item reveal" style="--d:.24s;--w:98%"><div class="q-bar"><b></b></div><h3>Haftung</h3><p>Optimiert für die Materialien gängiger Padelschläger-Rahmen.</p></div>
-    <div class="q-item reveal" style="--d:.36s;--w:86%"><div class="q-bar"><b></b></div><h3>Beständigkeit</h3><p>Auch bei täglichem Einsatz und Bodenkontakt dauerhaft stabil.</p></div>
-  </div>
+  <p class="lead reveal" style="--d:.15s">Wir setzen auf DTF-Druck mit Laminierung – nicht weil es günstig ist, sondern weil wir es für diesen Anwendungsfall für die beste Wahl halten.</p>
+  <ul class="q-grid">
+    <li class="q-item reveal" style="--d:0s"><h3>Feine Details</h3><p>Der DTF-Druck eignet sich auch für Logos mit feinen Details.</p></li>
+    <li class="q-item reveal" style="--d:.12s"><h3>Laminierung</h3><p>Die Laminierung schützt den Druck zusätzlich vor Abrieb.</p></li>
+    <li class="q-item reveal" style="--d:.24s"><h3>Für gängige Rahmen</h3><p>Gedacht für die Rahmen gängiger Padelschläger.</p></li>
+    <li class="q-item reveal" style="--d:.36s"><h3>Für den Cluballtag</h3><p>Entwickelt für Leihschläger, die oft genutzt werden und auch mal den Boden berühren.</p></li>
+  </ul>
 </section>
 
 <!-- CONTACT -->
@@ -585,8 +583,8 @@ footer p { color: var(--gray); font-size: .85rem; }
   <div class="contact-layout">
     <div>
       <div class="kicker reveal">Kontakt</div>
-      <h2 class="title reveal"><span class="mask"><span>Kostenloses</span></span><span class="mask"><span style="--d:.1s">Muster anfragen</span></span></h2>
-      <p class="lead reveal" style="--d:.2s">Wir produzieren ein Testmuster mit eurem Logo – unverbindlich, damit ihr das Produkt in der Hand haltet bevor ihr entscheidet.</p>
+      <h2 class="title reveal"><span class="mask"><span>Unverbindlich</span></span><span class="mask"><span style="--d:.1s">anfragen</span></span></h2>
+      <p class="lead reveal" style="--d:.2s">Wir zeigen euch Beispiele, wie euer Logo auf dem Protektor aussehen kann, und schicken auf Wunsch ein Muster mit Beispiel-Logo.</p>
       <p class="contact-note reveal" style="--d:.3s">Antwort innerhalb von 24 Stunden</p>
     </div>
 
@@ -621,7 +619,7 @@ footer p { color: var(--gray); font-size: .85rem; }
       </div>
       <input type="hidden" name="_subject" value="Neue Muster-Anfrage – Made2Padel">
       <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="display:none">
-      <button type="submit" class="btn-submit" id="submitBtn">Muster anfragen</button>
+      <button type="submit" class="btn-submit" id="submitBtn">Unverbindlich anfragen</button>
       <p class="form-privacy">Eure Angaben nutzen wir nur, um eure Anfrage zu beantworten. Mehr dazu in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
       <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
     </form>
@@ -672,7 +670,7 @@ footer p { color: var(--gray); font-size: .85rem; }
     } catch (e) {
       statusEl.textContent = 'Die Anfrage konnte nicht gesendet werden. Bitte versucht es erneut oder schreibt an info@made2padel.de.';
     } finally {
-      btn.disabled = false; btn.textContent = 'Muster anfragen';
+      btn.disabled = false; btn.textContent = 'Unverbindlich anfragen';
     }
   });
   document.getElementById('againBtn').addEventListener('click', () => { done.hidden = true; form.hidden = false; form.querySelector('input').focus(); });
