@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex">
 <title>Über uns – Made2Padel</title>
 <link rel="stylesheet" href="fonts.css">
 <style>
@@ -44,7 +43,7 @@ footer a { color: var(--gray-l); }
 .person { background: var(--panel); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
 .photo { aspect-ratio: 4/3; display: grid; place-items: center; background: radial-gradient(circle at 50% 70%, rgba(197,227,52,.14), transparent 60%), var(--panel-2); position: relative; }
 .initials { width: 110px; height: 110px; border-radius: 50%; border: 2px solid var(--lime); display: grid; place-items: center; font-stretch: 125%; font-weight: 800; font-size: 2.2rem; color: var(--lime); }
-.photo small { position: absolute; bottom: .9rem; font-size: .75rem; }
+.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
 .person-body { padding: 1.5rem; }
 .role { color: var(--lime); font-size: .85rem; font-weight: 600; margin-bottom: .6rem; }
 .person p { color: var(--gray-l); font-weight: 300; font-size: .95rem; }
@@ -108,23 +107,23 @@ footer a { color: var(--gray-l); }
 <main class="wrap">
   <div class="kicker reveal">Über uns</div>
   <h1 class="reveal" style="--d:.05s">Zwei Gründer<br>aus Münster</h1>
-  <p class="lead reveal" style="--d:.1s">Hinter Made2Padel stehen Berkay und Ryan. Wir sind ein junges Team und wollen Clubs ein Produkt bieten, das ihren Namen auf jeden Schläger bringt. <span class="ph">Optional: euer persönlicher Bezug zu Padel in einem Satz.</span></p>
+  <p class="lead reveal" style="--d:.1s">Hinter Made2Padel stehen Berkay und Ryan. Wir sind ein junges Team und wollen Clubs ein Produkt bieten, das ihren Namen auf jeden Schläger bringt.</p>
 
   <div class="team">
     <article class="person reveal">
-      <div class="photo"><div class="initials">BS</div><small class="ph">Foto von Berkay</small></div>
+      <div class="photo"><div class="initials">BS</div><img src="img/berkay.jpg" alt="Berkay Stürmer" width="800" height="600" onerror="this.remove()"></div>
       <div class="person-body">
         <h3>Berkay Stürmer</h3>
-        <div class="role">Mitgründer · <span class="ph">Rolle, z. B. Produktion & Technik</span></div>
-        <p><span class="ph">2–3 Sätze: Studium, seit wann du Padel spielst, was du bei Made2Padel machst.</span></p>
+        <div class="role">Mitgründer · Produkt & Vertrieb</div>
+        <p>Berkay studiert im Master Wirtschaftsingenieurwesen mit Schwerpunkt Maschinenbau. Bei Made2Padel kümmert er sich darum, dass unsere Produkte durchdacht und sauber verarbeitet sind, und bespricht mit euch, was euer Club braucht, bis zum passenden Angebot. Seit 2026 steht er selbst auf dem Padelcourt.</p>
       </div>
     </article>
     <article class="person reveal" style="--d:.12s">
-      <div class="photo"><div class="initials">RC</div><small class="ph">Foto von Ryan</small></div>
+      <div class="photo"><div class="initials">RC</div></div>
       <div class="person-body">
         <h3>Ryan Chwaltzyk</h3>
-        <div class="role">Mitgründer · <span class="ph">Rolle, z. B. Vertrieb & Kunden</span></div>
-        <p><span class="ph">2–3 Sätze: Hintergrund, Bezug zu Padel, was Ryan bei Made2Padel macht.</span></p>
+        <div class="role">Mitgründer · Kundenbeziehungen & Außendarstellung</div>
+        <p>Ryan studiert für den gehobenen Polizeidienst und ist meist der Erste, mit dem ihr bei Made2Padel sprecht. Er knüpft den Kontakt zu Clubs in der Region, bleibt euer Ansprechpartner auch nach der ersten Bestellung und sorgt dafür, wie sich Made2Padel nach außen zeigt. Padel spielt er seit 2025.</p>
       </div>
     </article>
   </div>
@@ -135,10 +134,9 @@ footer a { color: var(--gray-l); }
       <h2>Wie aus einer Idee am Court Made2Padel wurde</h2>
     </div>
     <div class="story-text reveal" style="--d:.1s">
-      <p><span class="ph">Wie seid ihr auf die Idee gekommen? Zum Beispiel: Was ist euch an Leihschlägern oder Protektoren aufgefallen?</span></p>
       <ul class="timeline">
-        <li><div class="when"><span class="ph">Monat Jahr</span></div><h3>Die Idee</h3><p><span class="ph">Kurz beschreiben, wann und wo.</span></p></li>
-        <li><div class="when"><span class="ph">Monat Jahr</span></div><h3>Erste Gespräche mit Clubs</h3><p>Wir haben bei Padelclubs in der Region nachgefragt, ob personalisierte Protektoren für sie interessant sind.</p></li>
+        <li><div class="when">August 2026</div><h3>Die Idee</h3><p>Uns fiel auf, dass Padelschläger fast nie zeigen, zu welchem Club sie gehören. Daraus entstand die Idee, den Kantenschutz zum Träger für das Logo des eigenen Clubs zu machen.</p></li>
+        <li><div class="when">September 2026</div><h3>Erste Gespräche mit Clubs</h3><p>Wir haben bei Padelclubs in der Region nachgefragt, ob personalisierte Protektoren für sie interessant sind.</p></li>
         <li class="now"><div class="when">Jetzt</div><h3>Die ersten Muster</h3><p>Wir produzieren die ersten Protektoren und suchen Clubs, die sie mit uns testen möchten.</p></li>
       </ul>
     </div>
@@ -149,7 +147,7 @@ footer a { color: var(--gray-l); }
     <h2 class="reveal">Was euch bei uns erwartet</h2>
     <div class="values">
       <div class="value reveal"><h3>Persönlich</h3><p>Ihr sprecht direkt mit uns, nicht mit einer Hotline. Jede Anfrage beantworten wir selbst.</p></div>
-      <div class="value reveal" style="--d:.1s"><h3>Sorgfältig</h3><p>Bevor wir drucken, bekommt ihr eine Vorschau mit eurem Logo und gebt sie frei. Erst dann geht es in die Produktion.</p></div>
+      <div class="value reveal" style="--d:.1s"><h3>Sorgfältig</h3><p>Bevor euer Logo in den Druck geht, bekommt ihr eine Vorschau mit eurem Logo und gebt sie frei. Erst dann geht es in die Produktion.</p></div>
       <div class="value reveal" style="--d:.2s"><h3>Aus der Region</h3><p>Wir sitzen in Münster und konzentrieren uns zuerst auf Clubs in der Umgebung, damit wir nah dran sind.</p></div>
     </div>
   </section>
