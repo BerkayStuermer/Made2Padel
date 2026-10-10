@@ -10,3 +10,4 @@
 - Die Datei CNAME niemals ändern oder löschen.
 - Nach jeder Änderung prüfen, dass die Seite auch auf dem Handy (ca. 390 px Breite) funktioniert.
 - Interne Links immer ohne .html schreiben, z. B. /faq statt faq.html.
+- Jede Seite bindet im <head> das Favicon ein (/favicon.ico, /favicon.svg, /apple-touch-icon.png). Neue Seiten bekommen dieselben drei Zeilen.
