@@ -9,3 +9,4 @@
 - Unterseiten haben noindex, bis ihre Platzhalter gefüllt sind.
 - Die Datei CNAME niemals ändern oder löschen.
 - Nach jeder Änderung prüfen, dass die Seite auch auf dem Handy (ca. 390 px Breite) funktioniert.
+- Interne Links immer ohne .html schreiben, z. B. /faq statt faq.html.
