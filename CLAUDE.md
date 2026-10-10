@@ -12,3 +12,5 @@
 - Interne Links immer ohne .html schreiben, z. B. /faq statt faq.html.
 - Jede Seite bindet im <head> das Favicon ein (/favicon.ico, /favicon.svg, /apple-touch-icon.png). Neue Seiten bekommen dieselben drei Zeilen.
 - Hintergrund: dezenter Lime-Lichtschein über body::before (fixiert). Bei neuen Seiten denselben CSS-Block übernehmen, Abschnitte nicht mit schwarzem Hintergrund überdecken.
+- Suche: search.js (lokal) liest die Seiten beim Öffnen selbst aus. Jede Seite hat den Lupen-Button (id="searchBtn") vor dem Menü und lädt /search.js. Neue Seiten in search.js unter SEITEN eintragen.
+- Footer jeder Seite enthält den Instagram-Link (instagram.com/made2padel). Keine Social-Media-Einbettungen oder Tracking-Skripte.

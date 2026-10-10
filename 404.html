@@ -94,12 +94,16 @@ body::before {
     radial-gradient(60vw 50vh at 85% 15%, rgba(197,227,52,.10), transparent 70%),
     radial-gradient(50vw 50vh at 5% 85%, rgba(197,227,52,.06), transparent 70%);
 }
+/* ---------- Social-Link im Footer ---------- */
+.social-link { display: inline-flex; align-items: center; gap: .3rem; color: var(--lime) !important; font-weight: 600; text-decoration: none; }
+.social-link:hover { text-decoration: underline; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 </style>
 </head>
 <body>
 <header class="top">
   <a href="/" class="wordmark" aria-label="Made2Padel Startseite">made<span>2</span>padel</a>
-  <div class="nav-right"><div class="menu" id="menu">
+  <div class="nav-right"><button class="search-btn" id="searchBtn" type="button" aria-label="Suche öffnen" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg></button><div class="menu" id="menu">
       <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="menuList">Menü<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
       <ul class="menu-list" id="menuList" role="list"><li><a href="/"><span class="mi">Startseite</span><span class="md">Zurück zum Anfang</span></a></li><li><a href="/shop"><span class="mi">Shop</span><span class="md">Zubehör mit eurem Logo</span></a></li><li><a href="/ueber-uns"><span class="mi">Über uns</span><span class="md">Wer hinter Made2Padel steckt</span></a></li><li><a href="/faq"><span class="mi">FAQ</span><span class="md">Häufige Fragen</span></a></li><li><a href="/logo-anleitung"><span class="mi">Logo-Anleitung</span><span class="md">So schickt ihr uns euer Logo</span></a></li></ul>
     </div><a href="/#kontakt" class="nav-cta">Unverbindlich anfragen</a></div>
@@ -122,7 +126,7 @@ body::before {
   </div>
 </main>
 
-<footer><a href="/">Startseite</a><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a></footer>
+<footer><a href="/">Startseite</a><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a><a class="social-link" href="https://www.instagram.com/made2padel/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span><span class="sr">(öffnet in neuem Tab)</span></a></footer>
 <script>
 (function(){
   if (!('IntersectionObserver' in window)) { document.querySelectorAll('.reveal').forEach(e=>e.classList.add('in')); return; }
@@ -144,5 +148,6 @@ body::before {
 })();
 
 </script>
+<script src="/search.js" defer></script>
 </body>
 </html>
