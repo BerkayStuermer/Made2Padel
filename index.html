@@ -78,9 +78,9 @@ nav.scrolled { background: rgba(5,5,5,.9); backdrop-filter: blur(10px); border-c
 
 /* ---------- Hero ---------- */
 .hero {
-  min-height: 100vh; min-height: 100svh;
+  min-height: calc(100vh - 140px); min-height: calc(100svh - 140px);
   display: grid; grid-template-columns: 1.2fr 1fr; align-items: center; gap: 4vw;
-  padding: 120px 6vw 80px; position: relative; overflow: hidden;
+  padding: 60px 6vw 80px; position: relative; overflow: hidden;
 }
 .hero h1 {
   font-stretch: 125%; font-weight: 800;
@@ -154,39 +154,16 @@ nav.scrolled { background: rgba(5,5,5,.9); backdrop-filter: blur(10px); border-c
 @keyframes trail { to { stroke-dashoffset: 0; } }
 
 
-/* ---------- Sticky racket story ---------- */
-.story { height: 320vh; position: relative; }
-.story-sticky {
-  position: sticky; top: 0; height: 100vh; height: 100svh;
-  display: grid; grid-template-columns: 1fr 1fr; align-items: center; gap: 4vw;
-  padding: 90px 6vw 40px;
+/* ---------- Marquee (direkt unter der Menüleiste) ---------- */
+.marquee { margin-top: calc(72px + env(safe-area-inset-top, 0px)); border-block: 1px solid var(--line); overflow: hidden; padding: 1rem 0; background: var(--black); }
+.marquee-track { display: flex; width: max-content; animation: marquee 32s linear infinite; }
+.marquee-track span {
+  font-stretch: 125%; font-weight: 800; font-size: clamp(1.05rem, 2.2vw, 1.6rem);
+  padding: 0 1.8rem; white-space: nowrap; color: transparent;
+  -webkit-text-stroke: 1px #4a4a4a;
 }
-.story-captions { position: relative; min-height: 14rem; }
-.caption {
-  position: absolute; inset: 0;
-  opacity: 0; transform: translateY(20px); transition: opacity .35s, transform .5s;
-}
-.caption.on { opacity: 1; transform: none; }
-.caption .step {
-  font-size: .85rem; color: var(--lime); font-weight: 600; margin-bottom: 1rem;
-  display: flex; align-items: center; gap: .6rem;
-}
-.caption .step::before { content: ''; width: 28px; height: 2px; background: var(--lime); }
-.caption h2 {
-  font-stretch: 125%; font-weight: 800; line-height: 1.02;
-  font-size: clamp(1.9rem, 4.2vw, 3.4rem); margin-bottom: 1rem;
-}
-.caption p { color: var(--gray-l); max-width: 40ch; font-weight: 300; }
-.story-dots { display: flex; gap: .5rem; margin-top: 16rem; }
-.story-dots i { width: 36px; height: 3px; background: #2a2a2a; border-radius: 2px; overflow: hidden; position: relative; }
-.story-dots i b { position: absolute; inset: 0; background: var(--lime); transform-origin: left; transform: scaleX(0); }
-.racket { width: 100%; max-height: 78vh; justify-self: center; overflow: visible; }
-.racket .draw { fill: none; stroke: var(--white); stroke-width: 3; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
-.racket .holes circle { fill: var(--white); }
-.racket .holes { opacity: 0; }
-.racket .guard { fill: none; stroke: var(--lime); stroke-width: 20; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; filter: drop-shadow(0 0 14px rgba(197,227,52,.45)); }
-.racket .guard-text { font-family: 'Caveat Brush', cursive; font-size: 22px; fill: var(--black); opacity: 0; letter-spacing: 1px; }
-.racket .handle { fill: var(--white); opacity: 0; }
+.marquee-track span.fill { color: var(--lime); -webkit-text-stroke: 0; }
+@keyframes marquee { to { transform: translateX(-50%); } }
 
 /* ---------- Generic sections ---------- */
 section.block { padding: 120px 6vw; position: relative; }
@@ -361,20 +338,13 @@ footer p { color: var(--gray); font-size: .85rem; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 860px) {
-  .hero { grid-template-columns: 1fr; padding-top: 110px; }
+  .hero { grid-template-columns: 1fr; padding-top: 40px; }
   .hero-ball { max-width: 280px; order: -1; }
-  .story { height: 300vh; }
-  .story-sticky { grid-template-columns: 1fr; grid-template-rows: auto 1fr; padding-top: 84px; gap: 1rem; }
-  .story-captions { min-height: 9.5rem; }
-  .story-dots { margin-top: 10rem; }
-  .caption h2 { font-size: 1.7rem; }
-  .caption p { font-size: .9rem; }
   .wordmark { font-size: 1.6rem; }
   .nav-cta { font-size: .78rem; padding: .5rem .95rem; white-space: normal; max-width: 8.5rem; text-align: center; line-height: 1.15; }
   .menu-btn { font-size: .78rem; padding: .5rem .8rem; }
   .nav-right { gap: .5rem; }
   .menu-list { position: fixed; left: 4vw; right: 4vw; width: auto; top: calc(72px + env(safe-area-inset-top, 0px)); }
-  .racket { max-height: 46svh; }
   .problem-grid, .steps, .benefits-layout, .contact-layout, .form-row { grid-template-columns: 1fr; }
   .steps-line { display: none; }
   .benefits-left { position: static; }
@@ -418,6 +388,14 @@ footer p { color: var(--gray); font-size: .85rem; }
   </div>
 </nav>
 
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>PERSONALISIERT</span><span class="fill">MADE 2 PADEL</span><span>LANGLEBIG</span><span class="fill">AB 10 STÜCK</span><span>EUER LOGO</span><span class="fill">PERSONALISIERT</span><span>MADE 2 PADEL</span><span class="fill">LANGLEBIG</span><span>AB 10 STÜCK</span><span class="fill">EUER LOGO</span>
+    <span>PERSONALISIERT</span><span class="fill">MADE 2 PADEL</span><span>LANGLEBIG</span><span class="fill">AB 10 STÜCK</span><span>EUER LOGO</span><span class="fill">PERSONALISIERT</span><span>MADE 2 PADEL</span><span class="fill">LANGLEBIG</span><span>AB 10 STÜCK</span><span class="fill">EUER LOGO</span>
+  </div>
+</div>
+
 <!-- HERO -->
 <header class="hero" id="top">
   <div>
@@ -458,53 +436,6 @@ footer p { color: var(--gray); font-size: .85rem; }
     </div>
   </div>
 </header>
-
-<!-- STICKY STORY -->
-<section class="story" id="produkt">
-  <div class="story-sticky">
-    <div>
-      <div class="story-captions">
-        <div class="caption on" data-cap="0">
-          <div class="step">Schritt 1 von 3</div>
-          <h2>Der Schläger eurer Mitglieder</h2>
-          <p>Jeden Tag im Einsatz, jeden Tag mit Bodenkontakt. Der Rahmen braucht Schutz.</p>
-        </div>
-        <div class="caption" data-cap="1">
-          <div class="step">Schritt 2 von 3</div>
-          <h2>Unser Kantenschutz</h2>
-          <p>Robust, passgenau und laminiert – schützt den Rahmen vor Abrieb und Stößen.</p>
-        </div>
-        <div class="caption" data-cap="2">
-          <div class="step">Schritt 3 von 3</div>
-          <h2>Mit eurem Logo darauf</h2>
-          <p>Aus einem Schutz wird ein Markenzeichen. Auf jedem Leihschläger, auf jedem Foto.</p>
-        </div>
-      </div>
-      <div class="story-dots" aria-hidden="true"><i><b></b></i><i><b></b></i><i><b></b></i></div>
-    </div>
-
-    <svg class="racket" id="racket" viewBox="0 0 400 620" aria-label="Padelschläger mit personalisiertem Kantenschutz">
-      <defs>
-        <clipPath id="face"><ellipse cx="200" cy="220" rx="132" ry="156"/></clipPath>
-        <path id="guardPath" d="M 56.3 170 A 150 175 0 0 1 343.7 170"/>
-      </defs>
-      <!-- frame -->
-      <ellipse class="draw" cx="200" cy="220" rx="150" ry="175" pathLength="1"/>
-      <ellipse class="draw" cx="200" cy="220" rx="132" ry="156" pathLength="1" style="stroke-width:1.5;stroke:#5a5a5a"/>
-      <!-- holes -->
-      <g class="holes" clip-path="url(#face)" id="holes"></g>
-      <!-- throat -->
-      <path class="draw" d="M 120 360 Q 170 400 180 450 M 280 360 Q 230 400 220 450 M 160 372 Q 200 350 240 372" pathLength="1"/>
-      <!-- handle -->
-      <rect class="handle" x="178" y="450" width="44" height="140" rx="10"/>
-      <rect class="handle" x="172" y="584" width="56" height="16" rx="6"/>
-      <!-- guard + logo -->
-      <use href="#guardPath" class="guard" pathLength="1"/>
-      <path class="guard" id="guardVisible" d="M 56.3 170 A 150 175 0 0 1 343.7 170" pathLength="1"/>
-      <text class="guard-text" id="guardText" dy="7"><textPath href="#guardPath" startOffset="50%" text-anchor="middle">made2padel  •  euer club  •  made2padel</textPath></text>
-    </svg>
-  </div>
-</section>
 
 <!-- PROBLEM -->
 <section class="block" id="problem">
@@ -658,17 +589,6 @@ footer p { color: var(--gray); font-size: .85rem; }
   });
   document.getElementById('againBtn').addEventListener('click', () => { done.hidden = true; form.hidden = false; form.querySelector('input').focus(); });
 
-  /* build racket holes */
-  const holes = document.getElementById('holes');
-  for (let y = 80; y <= 370; y += 26) {
-    const off = ((y - 80) / 26) % 2 ? 13 : 0;
-    for (let x = 70 + off; x <= 330; x += 26) {
-      const c = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-      c.setAttribute('cx', x); c.setAttribute('cy', y); c.setAttribute('r', 5);
-      holes.appendChild(c);
-    }
-  }
-
   /* reveal on scroll */
   const io = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
@@ -685,33 +605,11 @@ footer p { color: var(--gray); font-size: .85rem; }
   const bar = document.getElementById('progress');
   const ball = document.getElementById('heroBall');
   const ballSvg = document.getElementById('ballSvg');
-  const story = document.getElementById('produkt');
-  const draws = document.querySelectorAll('#racket .draw');
-  const handles = document.querySelectorAll('#racket .handle');
-  const guard = document.getElementById('guardVisible');
-  const guardText = document.getElementById('guardText');
-  const caps = document.querySelectorAll('.caption');
-  const dots = document.querySelectorAll('.story-dots b');
   const steps = document.getElementById('steps');
   const stepsFill = document.getElementById('stepsFill');
   const stepItems = document.querySelectorAll('.step-item');
-  document.querySelector('#racket use').remove();
 
-  function setRacket(p) {
-    const frame = seg(p, 0.02, 0.32);
-    draws.forEach((d, i) => d.style.strokeDashoffset = 1 - seg(frame, i * 0.15, 1));
-    holes.style.opacity = seg(p, 0.2, 0.34);
-    handles.forEach(h => h.style.opacity = seg(p, 0.26, 0.36));
-    guard.style.strokeDashoffset = 1 - seg(p, 0.4, 0.66);
-    guardText.style.opacity = seg(p, 0.72, 0.84);
-    const idx = p < 0.37 ? 0 : p < 0.69 ? 1 : 2;
-    caps.forEach((c, i) => c.classList.toggle('on', i === idx));
-    dots[0].style.transform = `scaleX(${seg(p, 0, 0.36)})`;
-    dots[1].style.transform = `scaleX(${seg(p, 0.37, 0.68)})`;
-    dots[2].style.transform = `scaleX(${seg(p, 0.69, 0.9)})`;
-  }
-
-  if (reduce) { setRacket(1); stepsFill.style.transform = 'scaleX(1)'; stepItems.forEach(s => s.classList.add('lit')); return; }
+  if (reduce) { stepsFill.style.transform = 'scaleX(1)'; stepItems.forEach(s => s.classList.add('lit')); return; }
 
   let ticking = false;
   function onScroll() {
@@ -725,11 +623,6 @@ footer p { color: var(--gray); font-size: .85rem; }
       ball.style.transform = `translate3d(${-y * 0.12}px, ${y * 0.35}px, 0)`;
       ballSvg.style.transform = `rotate(${y * 0.4}deg)`;
     }
-
-    /* sticky racket story */
-    const r = story.getBoundingClientRect();
-    const total = story.offsetHeight - vh;
-    setRacket(clamp(-r.top / total));
 
     /* steps line */
     const s = steps.getBoundingClientRect();
