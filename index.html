@@ -390,6 +390,31 @@ footer.site-footer .ft-copy { margin: 0; color: #8A8A8A; font-size: .85rem; }
 footer.site-footer .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 @media (max-width: 900px) { footer.site-footer .ft-grid { grid-template-columns: 1fr 1fr; } footer.site-footer .ft-card { grid-column: 1 / -1; } }
 @media (max-width: 560px) { footer.site-footer { padding-top: 48px; } footer.site-footer .ft-grid { grid-template-columns: 1fr; gap: 36px; } footer.site-footer .ft-bottom { flex-direction: column; align-items: flex-start; } }
+/* ---------- Logo-Vorschau ---------- */
+.lv-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr); gap: 5vw; align-items: center; margin-top: 3rem; }
+.lv-controls { display: grid; gap: 1.1rem; }
+.lv-drop { display: grid; place-items: center; text-align: center; gap: .4rem; border: 1.5px dashed #3a3a3a; border-radius: 18px; padding: 1.6rem 1.2rem; cursor: pointer; transition: border-color .2s, background .2s; background: var(--panel); }
+.lv-drop:hover, .lv-drop.drag { border-color: var(--lime); background: #1a1c12; }
+.lv-drop:focus-within { border-color: var(--lime); }
+.lv-drop strong { font-size: 1rem; }
+.lv-drop span { color: var(--gray); font-size: .85rem; }
+.lv-drop input { position: absolute; width: 1px; height: 1px; opacity: 0; }
+.lv-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.lv-label { font-size: .85rem; font-weight: 600; color: var(--gray-l); }
+.lv-seg { display: inline-flex; background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+.lv-seg button { background: none; border: 0; color: var(--gray-l); font: inherit; font-size: .85rem; font-weight: 600; padding: .45rem .95rem; border-radius: 999px; cursor: pointer; }
+.lv-seg button[aria-pressed="true"] { background: var(--lime); color: var(--black); }
+.lv-range { width: 100%; -webkit-appearance: none; appearance: none; height: 6px; margin-top: .9rem; padding: 0 !important; border: 0 !important; border-radius: 999px; background: #2a2a2a !important; cursor: pointer; }
+.lv-range::-webkit-slider-thumb { -webkit-appearance: none; appearance: none; width: 20px; height: 20px; border-radius: 50%; background: #C5E334; border: 0; }
+.lv-range::-moz-range-thumb { width: 20px; height: 20px; border-radius: 50%; background: #C5E334; border: 0; }
+.lv-check { display: flex; align-items: center; gap: .6rem; font-size: .9rem; color: var(--gray-l); cursor: pointer; }
+.lv-check input { accent-color: #C5E334; width: 18px !important; height: 18px; padding: 0 !important; margin: 0; flex: none; border-radius: 4px; }
+.lv-note { color: var(--gray); font-size: .8rem; line-height: 1.5; }
+.lv-stage { position: relative; background: radial-gradient(ellipse at 50% 30%, #1d2012, #0b0b0b 70%); border: 1px solid var(--line); border-radius: 24px; padding: 2rem 1rem 1rem; overflow: hidden; }
+.lv-stage svg { display: block; width: 100%; height: auto; }
+.lv-tag { position: absolute; left: 16px; top: 14px; font-size: .72rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--lime); }
+.lv-cta { justify-self: start; }
+@media (max-width: 860px) { .lv-layout { grid-template-columns: 1fr; } .lv-stage { order: -1; } }
 </style>
 </head>
 <body>
@@ -497,6 +522,54 @@ footer.site-footer .sr { position: absolute; width: 1px; height: 1px; overflow: 
     <li class="q-item reveal" style="--d:.24s"><h3>Für gängige Rahmen</h3><p>Gedacht für die Rahmen gängiger Padelschläger.</p></li>
     <li class="q-item reveal" style="--d:.36s"><h3>Für den Cluballtag</h3><p>Entwickelt für Leihschläger, die oft genutzt werden und auch mal den Boden berühren.</p></li>
   </ul>
+</section>
+
+<!-- LOGO-VORSCHAU -->
+<section class="block" id="vorschau">
+  <div class="kicker reveal">Logo-Vorschau</div>
+  <h2 class="title reveal"><span class="mask"><span>So sieht euer Logo aus</span></span></h2>
+  <p class="lead reveal" style="--d:.15s">Ladet euer Logo hoch und seht sofort, wie es auf dem Kantenschutz wirkt.</p>
+  <div class="lv-layout">
+    <div class="lv-controls">
+      <label class="lv-drop" id="lvDrop" for="lvFile">
+        <input type="file" id="lvFile" accept="image/png,image/jpeg,image/svg+xml,image/webp">
+        <strong>Logo auswählen oder hierher ziehen</strong>
+        <span>PNG, JPG, SVG oder WebP</span>
+      </label>
+      <div class="lv-row">
+        <span class="lv-label" id="lvColorLabel">Farbe des Protektors</span>
+        <div class="lv-seg" role="group" aria-labelledby="lvColorLabel">
+          <button type="button" data-c="schwarz" aria-pressed="true">Schwarz</button>
+          <button type="button" data-c="transparent" aria-pressed="false">Transparent</button>
+        </div>
+      </div>
+      <div>
+        <label class="lv-label" for="lvSize">Größe des Logos</label>
+        <input class="lv-range" type="range" id="lvSize" min="50" max="100" value="85">
+      </div>
+      <label class="lv-check"><input type="checkbox" id="lvWhite"> Weißen Hintergrund entfernen</label>
+      <p class="lv-note">Euer Logo bleibt auf eurem Gerät und wird nicht hochgeladen. Die Vorschau ist eine Darstellung, kein exakter Druckabzug. Vor dem Druck bekommt ihr von uns eine Vorschau zur Freigabe.</p>
+      <a href="#kontakt" class="btn btn-lime lv-cta">Logo gefällt? Jetzt anfragen</a>
+    </div>
+    <div class="lv-stage" aria-live="polite">
+      <span class="lv-tag">Vorschau</span>
+      <svg viewBox="70 60 660 330" role="img" aria-label="Padelschläger mit Kantenschutz und eurem Logo">
+        <defs>
+          <radialGradient id="lvFace" cx="50%" cy="35%" r="70%"><stop offset="0" stop-color="#1c1c1c"/><stop offset="1" stop-color="#0d0d0d"/></radialGradient>
+          <linearGradient id="lvShine" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".18"/><stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".25"/></linearGradient>
+          <mask id="lvBandMask" maskUnits="userSpaceOnUse" x="0" y="0" width="800" height="470"><path id="lvBandM" fill="none" stroke="#fff" stroke-width="52" stroke-linecap="butt"/></mask>
+          <clipPath id="lvFaceClip"><ellipse cx="400" cy="470" rx="300" ry="350"/></clipPath>
+        </defs>
+        <ellipse cx="400" cy="470" rx="300" ry="350" fill="url(#lvFace)"/>
+        <g id="lvHoles" clip-path="url(#lvFaceClip)" fill="#050505"></g>
+        <ellipse cx="400" cy="470" rx="318" ry="368" fill="none" stroke="#2c2c2c" stroke-width="44"/>
+        <ellipse cx="400" cy="470" rx="318" ry="368" fill="none" stroke="url(#lvShine)" stroke-width="44"/>
+        <path id="lvBand" fill="none" stroke-width="52" stroke-linecap="butt"/>
+        <path id="lvBandShine" fill="none" stroke="url(#lvShine)" stroke-width="52" stroke-linecap="butt" opacity=".6"/>
+        <g mask="url(#lvBandMask)"><image id="lvImg" preserveAspectRatio="xMidYMid meet"/></g>
+      </svg>
+    </div>
+  </div>
 </section>
 
 <!-- CONTACT -->
@@ -658,6 +731,77 @@ footer.site-footer .sr { position: absolute; width: 1px; height: 1px; overflow: 
   window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(onScroll); ticking = true; } }, { passive: true });
   window.addEventListener('resize', onScroll);
   onScroll();
+})();
+</script>
+<script>
+/* ---------- Logo-Vorschau (läuft nur im Browser, nichts wird hochgeladen) ---------- */
+(function () {
+  const NS = 'http://www.w3.org/2000/svg';
+  const cx = 400, cy = 470, rx = 318, ry = 368;
+  const pt = a => [cx + rx * Math.cos(a), cy + ry * Math.sin(a)];
+  const a0 = Math.PI * 1.17, a1 = Math.PI * 1.83;          // Kantenschutz oben am Rahmen
+  const [x0, y0] = pt(a0), [x1, y1] = pt(a1);
+  const d = `M ${x0.toFixed(1)} ${y0.toFixed(1)} A ${rx} ${ry} 0 0 1 ${x1.toFixed(1)} ${y1.toFixed(1)}`;
+  ['lvBand', 'lvBandShine', 'lvBandM'].forEach(id => document.getElementById(id).setAttribute('d', d));
+  const holes = document.getElementById('lvHoles');
+  for (let y = 175; y <= 470; y += 30) for (let x = 130 + (((y - 175) / 30) % 2) * 15; x <= 670; x += 30) {
+    const c = document.createElementNS(NS, 'circle'); c.setAttribute('cx', x); c.setAttribute('cy', y); c.setAttribute('r', 6); holes.appendChild(c);
+  }
+  const band = document.getElementById('lvBand'), img = document.getElementById('lvImg');
+  const size = document.getElementById('lvSize'), white = document.getElementById('lvWhite');
+  const file = document.getElementById('lvFile'), drop = document.getElementById('lvDrop');
+  const COLORS = { schwarz: '#0b0b0b', transparent: 'rgba(255,255,255,.06)' };
+  const DEMO = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 90"><circle cx="45" cy="45" r="34" fill="#C5E334"/><path d="M22 22c14 9 14 37 0 46M68 22c-14 9-14 37 0 46" stroke="#fff" stroke-width="5" fill="none"/><text x="96" y="62" font-family="Arial Black, Arial, sans-serif" font-weight="900" font-size="52" fill="#fff">EUER LOGO</text></svg>');
+  let original = DEMO, shown = DEMO;
+
+  function layout(ratio) {
+    const k = size.value / 100;
+    const h = 42 * k, w = Math.min(h * ratio, 300 * k);
+    const hh = Math.min(h, w / ratio);
+    img.setAttribute('width', w); img.setAttribute('height', hh);
+    img.setAttribute('x', cx - w / 2); img.setAttribute('y', (cy - ry) - hh / 2);
+  }
+  let ratio = 520 / 90;
+  function render() {
+    img.setAttribute('href', shown);
+    layout(ratio);
+  }
+  function load(src) {
+    const im = new Image();
+    im.onload = () => {
+      ratio = (im.naturalWidth || 520) / (im.naturalHeight || 90);
+      if (white.checked && src !== DEMO) {
+        try {
+          const c = document.createElement('canvas'); const max = 1200;
+          const sc = Math.min(1, max / Math.max(im.naturalWidth, im.naturalHeight));
+          c.width = Math.round(im.naturalWidth * sc); c.height = Math.round(im.naturalHeight * sc);
+          const g = c.getContext('2d'); g.drawImage(im, 0, 0, c.width, c.height);
+          const px = g.getImageData(0, 0, c.width, c.height), p = px.data;
+          for (let i = 0; i < p.length; i += 4) { const m = Math.min(p[i], p[i + 1], p[i + 2]); if (m > 235) p[i + 3] = 0; else if (m > 210) p[i + 3] = Math.round(p[i + 3] * (235 - m) / 25); }
+          g.putImageData(px, 0, 0); shown = c.toDataURL('image/png');
+        } catch (e) { shown = src; }
+      } else shown = src;
+      render();
+    };
+    im.onerror = () => { shown = src; render(); };
+    im.src = src;
+  }
+  function useFile(f) {
+    if (!f || !/^image\//.test(f.type)) return;
+    const r = new FileReader(); r.onload = () => { original = r.result; load(original); }; r.readAsDataURL(f);
+  }
+  file.addEventListener('change', () => useFile(file.files[0]));
+  ['dragenter', 'dragover'].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.add('drag'); }));
+  ['dragleave', 'drop'].forEach(t => drop.addEventListener(t, e => { e.preventDefault(); drop.classList.remove('drag'); }));
+  drop.addEventListener('drop', e => useFile(e.dataTransfer.files[0]));
+  size.addEventListener('input', () => layout(ratio));
+  white.addEventListener('change', () => load(original));
+  document.querySelectorAll('.lv-seg button').forEach(b => b.addEventListener('click', () => {
+    document.querySelectorAll('.lv-seg button').forEach(x => x.setAttribute('aria-pressed', x === b));
+    band.setAttribute('stroke', COLORS[b.dataset.c]);
+  }));
+  band.setAttribute('stroke', COLORS.schwarz);
+  load(DEMO);
 })();
 </script>
 <script src="/search.js?v=2" defer></script>
