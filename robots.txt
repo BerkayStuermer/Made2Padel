@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://made2padel.de/sitemap.xml

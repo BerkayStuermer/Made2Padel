@@ -6,7 +6,7 @@
 - Das Dropdown-Menü existiert in jeder HTML-Datei. Änderungen am Menü immer in ALLEN Seiten gleich übernehmen.
 - Formulare senden per fetch an https://formspree.io/f/mnpnoowo und enthalten das versteckte Honeypot-Feld _gotcha. Nicht entfernen.
 - Grün markierte Platzhalter haben die Klasse "ph". Keine Fakten über das Produkt oder die Gründer erfinden; Unbekanntes als Platzhalter lassen.
-- Unterseiten haben noindex, bis ihre Platzhalter gefüllt sind.
+- Jede Seite hat einen <link rel="canonical"> auf ihre Adresse ohne .html und eine eigene meta description. Neue Seiten in sitemap.xml eintragen. Nur 404.html hat noindex.
 - Die Datei CNAME niemals ändern oder löschen.
 - Nach jeder Änderung prüfen, dass die Seite auch auf dem Handy (ca. 390 px Breite) funktioniert.
 - Interne Links immer ohne .html schreiben, z. B. /faq statt faq.html.
