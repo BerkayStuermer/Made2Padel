@@ -123,7 +123,9 @@ footer.site-footer .ft-line { margin: 0 0 8px; color: #C8C8C8; display: flex; fl
 footer.site-footer .ft-line > span { font-weight: 700; color: #fff; min-width: 5.5rem; }
 footer.site-footer .ft-line a { color: #C8C8C8; text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
 footer.site-footer .ft-line a:hover { color: #C5E334; }
-footer.site-footer .ft-bottom { max-width: 1200px; margin: 48px auto 0; padding-top: 22px; border-top: 1px solid #262626; display: flex; align-items: center; justify-content: space-between; gap: 14px 28px; flex-wrap: wrap; }
+footer.site-footer .ft-bottom { position: relative; max-width: 1200px; margin: 48px auto 0; padding-top: 22px; display: flex; align-items: center; justify-content: space-between; gap: 14px 28px; flex-wrap: wrap; }
+footer.site-footer { overflow: hidden; }
+footer.site-footer .ft-bottom::before { content: ''; position: absolute; top: 0; left: 50%; width: 100vw; transform: translateX(-50%); border-top: 1px solid #262626; }
 footer.site-footer .ft-mark { font-family: 'Caveat Brush', 'Brush Script MT', cursive; font-size: 1.8rem; line-height: 1; color: #fff; text-decoration: none; display: inline-block; transform: rotate(-4deg); }
 footer.site-footer .ft-mark span { color: #C5E334; }
 footer.site-footer .ft-legal { display: flex; gap: 1.4rem; flex-wrap: wrap; font-size: .85rem; }
