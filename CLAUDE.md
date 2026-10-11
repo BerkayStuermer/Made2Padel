@@ -10,7 +10,7 @@
 - Die Datei CNAME niemals ändern oder löschen.
 - Nach jeder Änderung prüfen, dass die Seite auch auf dem Handy (ca. 390 px Breite) funktioniert.
 - Interne Links immer ohne .html schreiben, z. B. /faq statt faq.html.
-- Jede Seite bindet im <head> das Favicon ein (/favicon.ico?v=2, /favicon.svg?v=2, /apple-touch-icon.png?v=2; bei neuem Favicon die Zahl erhöhen). Neue Seiten bekommen dieselben drei Zeilen.
+- Jede Seite bindet im <head> das Favicon ein: /favicon.ico, /favicon-32.png, /favicon-192.png, /favicon.svg und /apple-touch-icon.png, jeweils mit ?v=3 (bei neuem Favicon die Zahl erhöhen). Neue Seiten bekommen dieselben fünf Zeilen.
 - Suche: search.js (lokal) liest die Seiten beim Öffnen selbst aus. Jede Seite hat den Lupen-Button (id="searchBtn") vor dem Menü und lädt /search.js. Neue Seiten in search.js unter SEITEN eintragen.
 - Footer jeder Seite enthält den Instagram-Link (instagram.com/made2padel). Keine Social-Media-Einbettungen oder Tracking-Skripte.
 - site.js (lokal) enthält den "Nach oben"-Button und wird auf jeder Seite nach search.js geladen.
