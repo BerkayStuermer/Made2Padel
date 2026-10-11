@@ -46,6 +46,7 @@ footer a { color: var(--gray-l); }
 .person { background: var(--panel); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
 .photo { aspect-ratio: 4/3; display: grid; place-items: center; background: radial-gradient(circle at 50% 70%, rgba(197,227,52,.14), transparent 60%), var(--panel-2); position: relative; }
 .initials { width: 110px; height: 110px; border-radius: 50%; border: 2px solid var(--lime); display: grid; place-items: center; font-stretch: 125%; font-weight: 800; font-size: 2.2rem; color: var(--lime); }
+.photo picture { position: absolute; inset: 0; }
 .photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 20%; }
 .person-body { padding: 1.5rem; }
 .role { color: var(--lime); font-size: .85rem; font-weight: 600; margin-bottom: .6rem; }
@@ -120,9 +121,9 @@ footer a { color: var(--gray-l); }
 
   <div class="team">
     <article class="person reveal">
-      <div class="photo"><div class="initials">BS</div><img src="img/berkay.jpg" alt="Berkay Stürmer" width="800" height="600" onerror="this.remove()"></div>
+      <div class="photo"><div class="initials">BS</div><picture><source type="image/webp" srcset="/img/berkay.webp"><img src="/img/berkay.jpg" alt="Berkay Stuermer" width="800" height="1000" loading="lazy" decoding="async"></picture></div>
       <div class="person-body">
-        <h3>Berkay Stürmer</h3>
+        <h3>Berkay Stuermer</h3>
         <div class="role">Mitgründer · Produkt & Vertrieb</div>
         <p>Berkay studiert im Master Wirtschaftsingenieurwesen mit Schwerpunkt Maschinenbau. Bei Made2Padel kümmert er sich darum, dass unsere Produkte durchdacht und sauber verarbeitet sind, und bespricht mit euch, was euer Club braucht, bis zum passenden Angebot. Seit 2026 steht er selbst auf dem Padelcourt.</p>
       </div>
@@ -132,7 +133,7 @@ footer a { color: var(--gray-l); }
       <div class="person-body">
         <h3>Ryan Chwaltzyk</h3>
         <div class="role">Mitgründer · Kundenbeziehungen & Außendarstellung</div>
-        <p>Ryan studiert für den gehobenen Polizeidienst und ist meist der Erste, mit dem ihr bei Made2Padel sprecht. Er knüpft den Kontakt zu Clubs in der Region, bleibt euer Ansprechpartner auch nach der ersten Bestellung und sorgt dafür, wie sich Made2Padel nach außen zeigt. Padel spielt er seit 2025.</p>
+        <p>Ryan ist meist der Erste, mit dem ihr bei Made2Padel sprecht. Er knüpft den Kontakt zu Clubs in der Region, bleibt euer Ansprechpartner auch nach der ersten Bestellung und sorgt dafür, wie sich Made2Padel nach außen zeigt. Padel spielt er seit 2025.</p>
       </div>
     </article>
   </div>
