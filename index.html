@@ -367,6 +367,28 @@ body::before {
     radial-gradient(50vw 50vh at 5% 85%, rgba(197,227,52,.06), transparent 70%);
 }
 html { overflow-x: clip; } /* verhindert seitliches Verschieben auf dem Handy */
+/* ---------- Hero-Hintergrund: Court-Bild in Markenfarben (KI-generiert) ---------- */
+.hero { isolation: isolate; }
+.hero::before {
+  content: ''; position: absolute; inset: 0; z-index: -1; pointer-events: none; opacity: .35;
+  background: url('/img/hero-court-2000.jpg') center 60% / cover no-repeat;
+  background-image: image-set(url('/img/hero-court-2000.webp') type('image/webp'), url('/img/hero-court-2000.jpg') type('image/jpeg'));
+  -webkit-mask: linear-gradient(90deg, transparent 0%, #000 55%, #000 85%, transparent 100%), linear-gradient(#000 70%, transparent);
+  -webkit-mask-composite: source-in;
+  mask: linear-gradient(90deg, transparent 0%, #000 55%, #000 85%, transparent 100%), linear-gradient(#000 70%, transparent);
+  mask-composite: intersect;
+}
+.hero .ai-tag { position: absolute; right: 6vw; bottom: 18px; font-size: .68rem; font-weight: 600; color: rgba(255,255,255,.55);
+  border: 1px solid rgba(255,255,255,.15); padding: .2rem .55rem; border-radius: 999px; }
+@media (max-width: 860px) {
+  .hero::before {
+    background-image: url('/img/hero-court-1000.jpg');
+    background-image: image-set(url('/img/hero-court-1000.webp') type('image/webp'), url('/img/hero-court-1000.jpg') type('image/jpeg'));
+    background-position: 40% 60%; opacity: .28;
+    -webkit-mask: linear-gradient(#000 60%, transparent); mask: linear-gradient(#000 60%, transparent);
+  }
+  .hero .ai-tag { bottom: 10px; }
+}
 /* ---------- Social-Link im Footer ---------- */
 .social-link { display: inline-flex; align-items: center; gap: .3rem; color: var(--lime) !important; font-weight: 600; text-decoration: none; }
 .social-link:hover { text-decoration: underline; }
@@ -448,6 +470,7 @@ html { overflow-x: clip; } /* verhindert seitliches Verschieben auf dem Handy */
       </svg>
     </div>
   </div>
+  <span class="ai-tag" role="note" aria-label="Hinweis: Das Hintergrundbild ist KI-generiert">Hintergrund KI-generiert</span>
 </header>
 
 <!-- PROBLEM -->
