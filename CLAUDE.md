@@ -12,6 +12,6 @@
 - Interne Links immer ohne .html schreiben, z. B. /faq statt faq.html.
 - Jede Seite bindet im <head> das Favicon ein: /favicon.ico, /favicon-32.png, /favicon-192.png, /favicon.svg und /apple-touch-icon.png, jeweils mit ?v=3 (bei neuem Favicon die Zahl erhöhen). Neue Seiten bekommen dieselben fünf Zeilen.
 - Suche: search.js (lokal) liest die Seiten beim Öffnen selbst aus. Jede Seite hat die Suchleiste (Button id="searchBtn" mit Lupe und Text "Suche") vor dem Menü und lädt /search.js?v=N (bei jeder Änderung an search.js oder site.js die Zahl auf allen Seiten erhöhen, sonst laden Browser die alte Datei). Neue Seiten in search.js unter SEITEN eintragen.
-- Footer jeder Seite enthält den Instagram-Link (instagram.com/made2padel). Keine Social-Media-Einbettungen oder Tracking-Skripte.
+- Footer ist auf allen Seiten gleich (footer.site-footer: Direktlinks, Über uns, Kontaktkarte mit Telefon +49 170 2021507, E-Mail, Instagram; ohne Adresse). Änderungen immer auf allen Seiten übernehmen. Keine Social-Media-Einbettungen oder Tracking-Skripte.
 - site.js (lokal) enthält den "Nach oben"-Button und wird auf jeder Seite nach search.js geladen.
 - Bilder liegen in /img (WebP + JPG-Fallback). KI-generierte Bilder immer sichtbar mit "KI-generiert" kennzeichnen (Klasse ai-tag). Fotos in Markenfarben einfärben (Duoton Schwarz → Lime), damit sie zum Design passen.
