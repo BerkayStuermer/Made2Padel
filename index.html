@@ -359,13 +359,6 @@ footer p { color: var(--gray); font-size: .85rem; }
   .hero-ball .trail line { stroke-dashoffset: 0; }
   .b-item { opacity: 1; }
 }
-/* ---------- Hintergrund: dezenter Lichtschein ---------- */
-body::before {
-  content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
-  background:
-    radial-gradient(60vw 50vh at 85% 15%, rgba(197,227,52,.10), transparent 70%),
-    radial-gradient(50vw 50vh at 5% 85%, rgba(197,227,52,.06), transparent 70%);
-}
 html { overflow-x: clip; } /* verhindert seitliches Verschieben auf dem Handy */
 /* ---------- Hero-Hintergrund: Court-Bild in Markenfarben (KI-generiert) ---------- */
 .hero { isolation: isolate; }
