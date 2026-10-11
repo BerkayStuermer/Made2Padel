@@ -367,6 +367,16 @@ body::before {
     radial-gradient(50vw 50vh at 5% 85%, rgba(197,227,52,.06), transparent 70%);
 }
 html { overflow-x: clip; } /* verhindert seitliches Verschieben auf dem Handy */
+/* ---------- Court-Bild ---------- */
+.court { padding: 0 6vw 40px; }
+.court figure { position: relative; margin: 0; border-radius: 24px; overflow: hidden; border: 1px solid var(--line);
+  aspect-ratio: 16 / 7; background: var(--panel); }
+.court img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; }
+.court figure::after { content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(180deg, rgba(5,5,5,0) 55%, rgba(5,5,5,.55) 100%); }
+.court .ai-tag { position: absolute; right: 14px; bottom: 12px; z-index: 1; font-size: .7rem; font-weight: 600;
+  color: rgba(255,255,255,.85); background: rgba(5,5,5,.55); backdrop-filter: blur(6px); padding: .25rem .6rem; border-radius: 999px; }
+@media (max-width: 860px) { .court figure { aspect-ratio: 4 / 3; border-radius: 18px; } .court img { object-position: 40% 60%; } }
 /* ---------- Social-Link im Footer ---------- */
 .social-link { display: inline-flex; align-items: center; gap: .3rem; color: var(--lime) !important; font-weight: 600; text-decoration: none; }
 .social-link:hover { text-decoration: underline; }
@@ -449,6 +459,17 @@ html { overflow-x: clip; } /* verhindert seitliches Verschieben auf dem Handy */
     </div>
   </div>
 </header>
+
+<!-- COURT-BILD -->
+<section class="court" aria-label="Padel-Court">
+  <figure class="reveal">
+    <picture>
+      <source type="image/webp" srcset="/img/court-800.webp 800w, /img/court-1200.webp 1200w, /img/court-2000.webp 2000w" sizes="(max-width: 860px) 100vw, 88vw">
+      <img src="/img/court-1200.jpg" width="1200" height="675" loading="lazy" decoding="async" alt="KI-generiertes Bild: leerer Indoor-Padel-Court mit blauem Kunstrasen, Glaswänden und drei Bällen">
+    </picture>
+    <figcaption class="ai-tag">KI-generiert</figcaption>
+  </figure>
+</section>
 
 <!-- PROBLEM -->
 <section class="block" id="problem">

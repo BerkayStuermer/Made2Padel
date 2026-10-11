@@ -15,3 +15,4 @@
 - Suche: search.js (lokal) liest die Seiten beim Öffnen selbst aus. Jede Seite hat den Lupen-Button (id="searchBtn") vor dem Menü und lädt /search.js. Neue Seiten in search.js unter SEITEN eintragen.
 - Footer jeder Seite enthält den Instagram-Link (instagram.com/made2padel). Keine Social-Media-Einbettungen oder Tracking-Skripte.
 - site.js (lokal) enthält den "Nach oben"-Button und wird auf jeder Seite nach search.js geladen.
+- Bilder liegen in /img (WebP in mehreren Größen + JPG-Fallback). KI-generierte Bilder immer mit dem Hinweis "KI-generiert" im Bild (Klasse ai-tag) und im Alt-Text kennzeichnen.
