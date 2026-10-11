@@ -361,6 +361,8 @@ html { overflow-x: clip; } /* verhindert seitliches Verschieben auf dem Handy */
 .menu-btn svg { width: 18px; height: 18px; }
 .menu-btn[aria-expanded="true"] svg { transform: none; }
 @media (max-width: 860px) { .menu-btn { width: 34px; height: 34px; } .menu-btn svg { width: 16px; height: 16px; } }
+.why-grid { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 860px) { .why-grid { grid-template-columns: 1fr; } }
 /* ---------- Footer (auf allen Seiten gleich) ---------- */
 footer.site-footer { display: block; border-top: 1px solid #262626; padding: 64px 6vw 28px; font-size: .95rem; background: transparent; }
 footer.site-footer .ft-grid { display: grid; grid-template-columns: 1fr 1.3fr 1.2fr; gap: 48px; align-items: start; max-width: 1200px; margin: 0 auto; }
@@ -444,16 +446,15 @@ footer.site-footer .sr { position: absolute; width: 1px; height: 1px; overflow: 
   <span class="ai-tag" role="note" aria-label="Hinweis: Das Hintergrundbild ist KI-generiert">Hintergrund KI-generiert</span>
 </header>
 
-<!-- PROBLEM -->
-<section class="block" id="problem">
-  <div class="kicker reveal">Das Problem</div>
-  <h2 class="title reveal"><span class="mask"><span>Standard-Protektoren</span></span><span class="mask"><span style="--d:.1s">hinterlassen keinen Eindruck</span></span></h2>
-  <p class="lead reveal" style="--d:.2s">Jeder Padelclub hat Leihschläger. Fast keiner hat darüber nachgedacht, was der Kantenschutz darauf kommuniziert – oder eben nicht.</p>
-  <div class="problem-grid">
-    <div class="p-card reveal" style="--d:0s"><h3>Kein Wiedererkennungswert</h3><p>Anonymer Kantenschutz ist eine verpasste Chance. Euer Logo könnte auf jedem Schläger sitzen – sichtbar für jeden Gast.</p></div>
-    <div class="p-card reveal" style="--d:.12s"><h3>Kein Merchandise-Produkt</h3><p>Mitglieder kaufen gerne kleine Produkte mit Club-Bezug. Einen personalisierten Protektor für ihren eigenen Schläger noch mehr.</p></div>
-    <div class="p-card reveal" style="--d:.24s"><h3>Marketing das aufhört</h3><p>Euer Branding endet an der Hallentür. Spieler nehmen ihre Schläger mit – euer Logo könnte überall dabei sein.</p></div>
-    <div class="p-card reveal" style="--d:.36s"><h3>Meist von der Stange</h3><p>Kantenschutz gibt es meist als Standardware ohne Bezug zu eurem Club. Das wollen wir ändern.</p></div>
+<!-- WARUM -->
+<section class="block" id="vorteile">
+  <div class="kicker reveal">Warum Made2Padel</div>
+  <h2 class="title reveal"><span class="mask"><span>Mehr als</span></span><span class="mask"><span style="--d:.1s">Kantenschutz</span></span></h2>
+  <p class="lead reveal" style="--d:.2s">Ein kleines Produkt, das euren Club sichtbar macht. In der Halle und außerhalb.</p>
+  <div class="problem-grid why-grid">
+    <div class="p-card reveal" style="--d:0s"><h3>Leihschläger mit eurem Logo</h3><p>Jeder Gast sieht sofort, wo er spielt. Euer Logo sitzt auf jedem Leihschläger statt anonymer Standardware.</p></div>
+    <div class="p-card reveal" style="--d:.12s"><h3>Merch für Mitglieder</h3><p>Ein bezahlbares Produkt, das Mitglieder für ihren eigenen Schläger kaufen. So ist euer Logo auf jeder Anlage dabei.</p></div>
+    <div class="p-card reveal" style="--d:.24s"><h3>Ab 10 Stück, ohne Risiko</h3><p>Keine großen Mindestmengen. Startet mit einem kleinen Set und bestellt nach, wenn es bei euch ankommt.</p></div>
   </div>
 </section>
 
@@ -461,43 +462,13 @@ footer.site-footer .sr { position: absolute; width: 1px; height: 1px; overflow: 
 <section class="block" id="ablauf" style="background:var(--panel)">
   <div class="kicker reveal">Ablauf</div>
   <h2 class="title reveal"><span class="mask"><span>Drei Schritte. Fertig.</span></span></h2>
-  <p class="lead reveal" style="--d:.15s">Ihr schickt uns euer Logo – wir übernehmen den Rest.</p>
+  <p class="lead reveal" style="--d:.15s">Ihr schickt uns euer Logo, wir übernehmen den Rest.</p>
   <div class="steps" id="steps">
     <div class="steps-line"><b id="stepsFill"></b></div>
-    <div class="step-item"><div class="step-num">1</div><h3>Logo einsenden</h3><p>Ihr schickt uns euer Club-Logo per E-Mail. Kein Designaufwand, keine Vorbereitung nötig.</p></div>
-    <div class="step-item"><div class="step-num">2</div><h3>Produktion</h3><p>Euer Logo wird im UV-DTF-Verfahren gedruckt, wir bringen es von Hand auf und laminieren es zusätzlich.</p></div>
+    <div class="step-item"><div class="step-num">1</div><h3>Logo einsenden</h3><p>Ihr schickt uns euer Club-Logo per E-Mail. Vor dem Druck bekommt ihr eine Vorschau zur Freigabe.</p></div>
+    <div class="step-item"><div class="step-num">2</div><h3>Produktion</h3><p>Wir drucken euer Logo im UV-DTF-Verfahren, auch mit feinen Details. Danach bringen wir es von Hand auf und laminieren es gegen Abrieb.</p></div>
     <div class="step-item"><div class="step-num">3</div><h3>Lieferung</h3><p>Fertige Protektoren, direkt einsatzbereit. Für Leihschläger, Verkauf oder beides.</p></div>
   </div>
-</section>
-
-<!-- BENEFITS -->
-<section class="block" id="vorteile">
-  <div class="benefits-layout">
-    <div class="benefits-left">
-      <div class="kicker reveal">Warum Made2Padel</div>
-      <h2 class="title reveal"><span class="mask"><span>Mehr als</span></span><span class="mask"><span style="--d:.1s">Kantenschutz</span></span></h2>
-      <p class="lead reveal" style="--d:.2s">Ein kleines Produkt mit großer Wirkung – für euren Club, eure Mitglieder und euer Branding.</p>
-    </div>
-    <ul class="b-list">
-      <li class="b-item"><div class="b-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="6"/><path d="M13 13l7 7"/></svg></div><div><h3>Professionelle Leihschläger</h3><p>Euer Club-Logo auf jedem Leihschläger. Ein Detail das Gästen sofort zeigt, dass hier Wert auf Qualität gelegt wird.</p></div></li>
-      <li class="b-item"><div class="b-icon"><svg viewBox="0 0 24 24"><path d="M4 8h16l-1.5 12h-13z"/><path d="M8 8a4 4 0 0 1 8 0"/></svg></div><div><h3>Merchandise für Mitglieder</h3><p>Ein bezahlbares Produkt das Mitglieder gerne kaufen – für ihren eigenen Schläger oder als Geschenk.</p></div></li>
-      <li class="b-item"><div class="b-icon"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><circle cx="12" cy="13.5" r="3.5"/><path d="M8 7l1.5-3h5L16 7"/></svg></div><div><h3>Sichtbarkeit außerhalb der Halle</h3><p>Spieler nehmen ihre Schläger mit in Parks, auf andere Anlagen, auf Instagram. Euer Logo ist dabei.</p></div></li>
-      <li class="b-item"><div class="b-icon"><svg viewBox="0 0 24 24"><path d="M5 12l5 5 9-10"/></svg></div><div><h3>Ab 10 Stück – kein Risiko</h3><p>Keine großen Mindestmengen. Testet das Produkt mit einem kleinen Set, bevor ihr skaliert.</p></div></li>
-    </ul>
-  </div>
-</section>
-
-<!-- QUALITY -->
-<section class="block quality" id="qualitaet">
-  <div class="kicker reveal">Qualität</div>
-  <h2 class="title reveal"><span class="mask"><span>Gemacht, um zu halten</span></span></h2>
-  <p class="lead reveal" style="--d:.15s">Euer Logo wird im UV-DTF-Verfahren gedruckt. Danach bringen wir es von Hand auf den Protektor auf und laminieren es zusätzlich.</p>
-  <ul class="q-grid">
-    <li class="q-item reveal" style="--d:0s"><h3>Feine Details</h3><p>Der UV-DTF-Druck eignet sich auch für Logos mit feinen Details.</p></li>
-    <li class="q-item reveal" style="--d:.12s"><h3>Laminierung</h3><p>Die Laminierung schützt den Druck zusätzlich vor Abrieb.</p></li>
-    <li class="q-item reveal" style="--d:.24s"><h3>Für gängige Rahmen</h3><p>Gedacht für die Rahmen gängiger Padelschläger.</p></li>
-    <li class="q-item reveal" style="--d:.36s"><h3>Für den Cluballtag</h3><p>Entwickelt für Leihschläger, die oft genutzt werden und auch mal den Boden berühren.</p></li>
-  </ul>
 </section>
 
 <!-- CONTACT -->
@@ -661,7 +632,7 @@ footer.site-footer .sr { position: absolute; width: 1px; height: 1px; overflow: 
   onScroll();
 })();
 </script>
-<script src="/search.js?v=2" defer></script>
-<script src="/site.js?v=2" defer></script>
+<script src="/search.js?v=3" defer></script>
+<script src="/site.js?v=3" defer></script>
 </body>
 </html>

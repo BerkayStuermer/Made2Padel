@@ -85,7 +85,7 @@
   const scrim = document.createElement('div'); scrim.className = 's-scrim';
   const box = document.createElement('div'); box.className = 's-box';
   box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', 'Suche');
-  box.innerHTML = `<div class="s-field">${ICON}<input type="search" id="sInput" placeholder="Suchen, z. B. Lieferzeit, Logo, Kantenschutz" autocomplete="off" aria-label="Suchbegriff" aria-controls="sResults"><button class="s-close" type="button">Esc</button></div><ul class="s-results" id="sResults" role="listbox"></ul>`;
+  box.innerHTML = `<div class="s-field">${ICON}<input type="search" id="site-search" name="search" role="searchbox" enterkeyhint="search" placeholder="Suchen, z. B. Lieferzeit, Logo, Kantenschutz" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-1p-ignore data-lpignore="true" aria-label="Suchbegriff" aria-controls="sResults"><button class="s-close" type="button">Esc</button></div><ul class="s-results" id="sResults" role="listbox"></ul>`;
   document.body.append(scrim, box);
   const input = box.querySelector('input');
   const list = box.querySelector('.s-results');
