@@ -67,8 +67,6 @@
 @keyframes sFlash { 0%, 40% { box-shadow: 0 0 0 6px rgba(197,227,52,.35); } 100% { box-shadow: 0 0 0 6px rgba(197,227,52,0); } }
 @media (max-width: 480px) {
   .nav-right { gap: .4rem !important; }
-  .menu-btn { padding: .45rem .7rem !important; }
-  .menu-btn svg { display: none; }
   .top .wordmark { font-size: 1.55rem; }
   .top { padding-left: 5vw !important; padding-right: 5vw !important; gap: .5rem !important; }
 }
