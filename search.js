@@ -34,10 +34,13 @@
 
   /* ---------- Styles ---------- */
   const css = `
-.search-btn { display: inline-grid; place-items: center; width: 38px; height: 38px; flex: none; border-radius: 50%;
-  background: none; border: 1px solid #3a3a3a; color: #fff; cursor: pointer; transition: border-color .2s, background .2s; }
-.search-btn:hover { border-color: #C5E334; }
-.search-btn svg { width: 17px; height: 17px; }
+.search-btn { display: inline-flex; align-items: center; gap: .55rem; width: 230px; height: 40px; flex: 0 1 auto; min-width: 0;
+  padding: 0 1rem; border-radius: 999px; background: #1a1a1a; border: 1px solid #2a2a2a; color: #fff; cursor: text;
+  font-family: 'Archivo', system-ui, sans-serif; font-size: .9rem; text-align: left; transition: border-color .2s, background .2s; }
+.search-btn:hover { border-color: #3a3a3a; background: #202020; }
+.search-btn:focus-visible { outline: 2px solid #C5E334; outline-offset: 2px; }
+.search-btn svg { width: 17px; height: 17px; flex: none; }
+.search-btn .sb-label { color: #8a8a8a; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .s-scrim { position: fixed; inset: 0; background: rgba(0,0,0,.6); backdrop-filter: blur(4px); z-index: 300; opacity: 0; pointer-events: none; transition: opacity .2s; }
 .s-scrim.on { opacity: 1; pointer-events: auto; }
 .s-box { position: fixed; z-index: 301; left: 50%; top: calc(80px + env(safe-area-inset-top, 0px)); width: min(640px, 92vw);
@@ -70,7 +73,10 @@
   .top .wordmark { font-size: 1.55rem; }
   .top { padding-left: 5vw !important; padding-right: 5vw !important; gap: .5rem !important; }
 }
-@media (max-width: 860px) { .search-btn { width: 34px; height: 34px; } .search-btn svg { width: 15px; height: 15px; } .s-box { top: calc(70px + env(safe-area-inset-top, 0px)); } }
+@media (max-width: 860px) { .search-btn { width: 150px; height: 36px; padding: 0 .8rem; font-size: .85rem; } .search-btn svg { width: 15px; height: 15px; } }
+@media (max-width: 600px) { .top-right .search-btn { width: 36px; padding: 0; justify-content: center; } .top-right .search-btn .sb-label { display: none; } }
+@media (max-width: 380px) { .search-btn { width: 36px; padding: 0; justify-content: center; } .search-btn .sb-label { display: none; } }
+@media (max-width: 860px) { .s-box { top: calc(70px + env(safe-area-inset-top, 0px)); } }
 @media (prefers-reduced-motion: reduce) { .s-box, .s-scrim { transition: none; } .s-flash { animation: none; } }`;
   const st = document.createElement('style'); st.textContent = css; document.head.appendChild(st);
 
