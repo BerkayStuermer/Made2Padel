@@ -72,6 +72,34 @@ footer a { color: var(--gray-l); }
 .menu-btn svg { width: 18px; height: 18px; }
 .menu-btn[aria-expanded="true"] svg { transform: none; }
 @media (max-width: 860px) { .menu-btn { width: 34px; height: 34px; } .menu-btn svg { width: 16px; height: 16px; } }
+/* ---------- Footer (auf allen Seiten gleich) ---------- */
+footer.site-footer { display: block; border-top: 1px solid #262626; padding: 64px 6vw 28px; font-size: .95rem; background: transparent; }
+footer.site-footer .ft-grid { display: grid; grid-template-columns: 1fr 1.3fr 1.2fr; gap: 48px; align-items: start; max-width: 1200px; margin: 0 auto; }
+footer.site-footer .ft-h { font-stretch: 112%; font-weight: 800; font-size: 1.15rem; margin: 0 0 14px; color: #fff; }
+footer.site-footer .ft-links { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+footer.site-footer .ft-links a { color: #C8C8C8; text-decoration: none; display: inline-flex; align-items: center; gap: .5rem; }
+footer.site-footer .ft-links a::before { content: '→'; color: #C5E334; transition: transform .2s; }
+footer.site-footer .ft-links a:hover { color: #fff; }
+footer.site-footer .ft-links a:hover::before { transform: translateX(3px); }
+footer.site-footer .ft-text { color: #C8C8C8; line-height: 1.6; margin: 0 0 18px; max-width: 40ch; }
+footer.site-footer .ft-btn { display: inline-block; background: #C5E334; color: #050505; font-weight: 700; text-decoration: none; padding: .7rem 1.4rem; border-radius: 999px; transition: background .2s; }
+footer.site-footer .ft-btn:hover { background: #fff; }
+footer.site-footer .ft-card { background: #161616; border: 1px solid #262626; border-radius: 18px; padding: 26px 28px; }
+footer.site-footer .ft-name { font-stretch: 112%; font-weight: 800; font-size: 1.2rem; margin: 0 0 16px; color: #fff; }
+footer.site-footer .ft-line { margin: 0 0 8px; color: #C8C8C8; display: flex; flex-wrap: wrap; gap: .4rem; }
+footer.site-footer .ft-line > span { font-weight: 700; color: #fff; min-width: 5.5rem; }
+footer.site-footer .ft-line a { color: #C8C8C8; text-decoration: underline; text-underline-offset: 3px; overflow-wrap: anywhere; }
+footer.site-footer .ft-line a:hover { color: #C5E334; }
+footer.site-footer .ft-bottom { max-width: 1200px; margin: 48px auto 0; padding-top: 22px; border-top: 1px solid #262626; display: flex; align-items: center; justify-content: space-between; gap: 14px 28px; flex-wrap: wrap; }
+footer.site-footer .ft-mark { font-family: 'Caveat Brush', 'Brush Script MT', cursive; font-size: 1.8rem; line-height: 1; color: #fff; text-decoration: none; display: inline-block; transform: rotate(-4deg); }
+footer.site-footer .ft-mark span { color: #C5E334; }
+footer.site-footer .ft-legal { display: flex; gap: 1.4rem; flex-wrap: wrap; font-size: .85rem; }
+footer.site-footer .ft-legal a { color: #8A8A8A; text-decoration: none; }
+footer.site-footer .ft-legal a:hover { color: #fff; }
+footer.site-footer .ft-copy { margin: 0; color: #8A8A8A; font-size: .85rem; }
+footer.site-footer .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+@media (max-width: 900px) { footer.site-footer .ft-grid { grid-template-columns: 1fr 1fr; } footer.site-footer .ft-card { grid-column: 1 / -1; } }
+@media (max-width: 560px) { footer.site-footer { padding-top: 48px; } footer.site-footer .ft-grid { grid-template-columns: 1fr; gap: 36px; } footer.site-footer .ft-bottom { flex-direction: column; align-items: flex-start; } }
 </style>
 </head>
 <body>
@@ -136,7 +164,36 @@ E-Mail: <a href="mailto:info@made2padel.de">info@made2padel.de</a></p>
 <p class="stand">Stand: September 2026</p>
 
 </main>
-<footer><a href="/">Startseite</a><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a><a class="social-link" href="https://www.instagram.com/made2padel/" target="_blank" rel="noopener">Instagram <span aria-hidden="true">↗</span><span class="sr">(öffnet in neuem Tab)</span></a></footer>
+<footer class="site-footer">
+  <div class="ft-grid">
+    <div class="ft-col" role="navigation" aria-label="Direktlinks">
+      <h2 class="ft-h">Direktlinks</h2>
+      <ul class="ft-links">
+        <li><a href="/shop">Shop</a></li>
+        <li><a href="/ueber-uns">Über uns</a></li>
+        <li><a href="/faq">FAQ</a></li>
+        <li><a href="/logo-anleitung">Logo-Anleitung</a></li>
+        <li><a href="/#kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h2 class="ft-h">Über uns</h2>
+      <p class="ft-text">Wir sind Berkay und Ryan aus Münster und bringen das Logo eures Clubs auf Kantenschutz für Padelschläger.</p>
+      <a class="ft-btn" href="/ueber-uns">Mehr über uns</a>
+    </div>
+    <div class="ft-card">
+      <p class="ft-name">Made2Padel GbR</p>
+      <p class="ft-line"><span>Telefon</span> <a href="tel:+491702021507">+49 170 2021507</a></p>
+      <p class="ft-line"><span>E-Mail</span> <a href="mailto:info@made2padel.de">info@made2padel.de</a></p>
+      <p class="ft-line"><span>Instagram</span> <a href="https://www.instagram.com/made2padel/" target="_blank" rel="noopener">@made2padel <span aria-hidden="true">↗</span><span class="sr">(öffnet in neuem Tab)</span></a></p>
+    </div>
+  </div>
+  <div class="ft-bottom">
+    <a href="/" class="ft-mark" aria-label="Made2Padel Startseite">made<span>2</span>padel</a>
+    <div class="ft-legal"><a href="/impressum">Impressum</a><a href="/datenschutz">Datenschutz</a></div>
+    <p class="ft-copy">© 2026 Made2Padel, Münster</p>
+  </div>
+</footer>
 <script>
 (function(){
   const menu = document.getElementById('menu'), btn = document.getElementById('menuBtn'), list = document.getElementById('menuList');
