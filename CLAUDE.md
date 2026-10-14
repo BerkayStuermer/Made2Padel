@@ -15,4 +15,4 @@
 - Footer ist auf allen Seiten gleich (footer.site-footer: Direktlinks, Über uns, Kontaktkarte mit Telefon +49 170 2021507, E-Mail, Instagram; ohne Adresse). Änderungen immer auf allen Seiten übernehmen. Keine Social-Media-Einbettungen oder Tracking-Skripte.
 - site.js (lokal) enthält den "Nach oben"-Button und wird auf jeder Seite nach search.js geladen.
 - Bilder liegen in /img (WebP + JPG-Fallback). KI-generierte Bilder immer sichtbar mit "KI-generiert" kennzeichnen (Klasse ai-tag). Fotos in Markenfarben einfärben (Duoton Schwarz → Lime), damit sie zum Design passen.
-- Linkvorschau (Open Graph): Jede Seite hat og:title, og:description, og:url (= canonical) und og:image https://made2padel.de/img/og-made2padel.jpg?v=2 (1200×630) plus twitter:card. Neue Seiten bekommen denselben Block; bei neuem Vorschaubild die Zahl erhöhen.
+- Linkvorschau (Open Graph): Jede Seite hat og:title, og:description, og:url (= canonical) und og:image https://made2padel.de/img/og-made2padel.jpg?v=3 (1200×630) plus twitter:card. Neue Seiten bekommen denselben Block; bei neuem Vorschaubild die Zahl erhöhen.
