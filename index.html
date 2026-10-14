@@ -187,6 +187,16 @@ h2.title {
 .p-card h3 { font-size: 1.1rem; font-weight: 700; margin-bottom: .6rem; }
 .p-card p { color: var(--gray); font-size: .95rem; font-weight: 300; }
 
+/* ---------- Warum Kantenschutz ---------- */
+.why-prot { background: linear-gradient(180deg, var(--panel) 0%, var(--black) 100%); }
+.wp-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2.2rem; margin-top: 3.5rem; max-width: 1100px; }
+.wp-item svg { width: 40px; height: 40px; color: var(--lime); display: block; margin-bottom: 1.3rem; }
+.wp-item .wp-line { height: 2px; background: linear-gradient(90deg, var(--lime), rgba(197,227,52,0)); margin-bottom: 1.2rem; }
+.wp-item h3 { font-stretch: 112%; font-size: 1.05rem; font-weight: 800; text-transform: uppercase; letter-spacing: .02em; margin-bottom: .5rem; }
+.wp-item p { color: var(--gray); font-size: .95rem; font-weight: 300; }
+@media (max-width: 1000px) { .wp-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .wp-grid { grid-template-columns: 1fr; gap: 1.8rem; } }
+
 /* ---------- Steps ---------- */
 .steps { position: relative; margin-top: 4.5rem; display: grid; grid-template-columns: repeat(3, 1fr); gap: 3rem; max-width: 1100px; }
 .steps-line { position: absolute; top: 28px; left: 28px; right: 28px; height: 2px; background: #2a2a2a; }
@@ -456,6 +466,26 @@ footer.site-footer .sr { position: absolute; width: 1px; height: 1px; overflow: 
 
   <span class="ai-tag" role="note" aria-label="Hinweis: Das Hintergrundbild ist KI-generiert">Hintergrund KI-generiert</span>
 </header>
+
+<!-- WARUM KANTENSCHUTZ -->
+<section class="block why-prot" id="warum-kantenschutz">
+  <div class="kicker reveal">Warum Kantenschutz</div>
+  <h2 class="title reveal"><span class="mask"><span>Darum gehört er</span></span><span class="mask"><span style="--d:.1s">auf jeden Schläger</span></span></h2>
+  <div class="wp-grid">
+    <div class="wp-item reveal" style="--d:0s">
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="5" width="22" height="30" rx="1.5"/><path d="M5 17h22M16 5v30"/><path d="M27 12l4-2M27 17h5M27 22l4 2"/></svg>
+      <div class="wp-line"></div><h3>Glas und Gitter</h3><p>Die meisten Schäden entstehen nicht durch den Ball, sondern beim Kontakt mit Glaswand und Gitter.</p></div>
+    <div class="wp-item reveal" style="--d:.1s">
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 31h32"/><circle cx="21" cy="26" r="5"/><path d="M21 9v5M14 12l2 3M28 12l-2 3"/></svg>
+      <div class="wp-line"></div><h3>Tiefe Bälle</h3><p>Wer einen Ball knapp über dem Boden holt, zieht die Kante über den Court.</p></div>
+    <div class="wp-item reveal" style="--d:.2s">
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 4l3 9 9-4-4 9 9 3-9 3 4 9-9-4-3 9-3-9-9 4 4-9-9-3 9-3-4-9 9 4z"/></svg>
+      <div class="wp-line"></div><h3>Duelle am Netz</h3><p>Am Netz treffen früher oder später zwei Schläger aufeinander.</p></div>
+    <div class="wp-item reveal" style="--d:.3s">
+      <svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 4l13 5v10c0 8-5.5 14-13 17C12.5 33 7 27 7 19V9z"/><path d="M14 20l4 4 8-8"/></svg>
+      <div class="wp-line"></div><h3>Längeres Schlägerleben</h3><p>Euer Schläger hält länger, für einen Bruchteil dessen, was ein neuer kostet.</p></div>
+  </div>
+</section>
 
 <!-- WARUM -->
 <section class="block" id="vorteile">
