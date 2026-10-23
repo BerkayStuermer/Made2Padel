@@ -359,7 +359,8 @@ const PRODUKTE = [
     id: 'protektor', name: 'Kantenschutz', kategorie: 'Schläger',
     kurz: 'Schützt den Schlägerrahmen, mit eurem Logo oder Wunschtext.',
     text: 'Der Protektor schützt den oberen Rahmen vor Abrieb und Bodenkontakt. Euer Logo oder Wunschtext wird im UV-DTF-Verfahren gedruckt, wir bringen es von Hand auf und laminieren es zusätzlich.',
-    varianten: { 'Farbe': ['Schwarz', 'Transparent'] },
+    varianten: { 'Länge': ['400 mm', '700 mm'], 'Form': ['Glatt', 'Gezackt'], 'Farbe': ['Schwarz', 'Transparent'] },
+    hinweis: 'Glatt: 38 mm breit mit runden Enden. Gezackt: 60 mm breit, die Zacken legen sich an die Rundung des Rahmens.',
     minMenge: 10, preis: null, art: 'protektor'
   }
 ];
@@ -436,6 +437,7 @@ function renderCfg() {
     <div class="art cfg-art">${ART[p.art]}</div>
     <p class="cfg-desc">${p.text}</p>
     ${varianten}
+    ${p.hinweis ? `<p class="hint">${p.hinweis}</p>` : ''}
     <fieldset><legend>Personalisierung</legend><div class="opts">
       <label class="opt"><input type="radio" name="pers" value="Club-Logo" checked><span>Club-Logo</span></label>
       <label class="opt"><input type="radio" name="pers" value="Wunschtext"><span>Wunschtext</span></label>
