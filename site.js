@@ -28,7 +28,7 @@
   });
 
   let ticking = false;
-  const update = () => { btn.classList.toggle('on', window.scrollY > window.innerHeight * 0.8); ticking = false; };
+  const update = () => { const on = window.scrollY > window.innerHeight * 0.8; btn.classList.toggle('on', on); btn.inert = !on; ticking = false; };
   window.addEventListener('scroll', () => { if (!ticking) { requestAnimationFrame(update); ticking = true; } }, { passive: true });
   update();
 })();

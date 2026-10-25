@@ -121,6 +121,8 @@ h1 { font-stretch: 125%; font-weight: 800; font-size: clamp(2.2rem, 6vw, 4.4rem)
 .cfg-art svg { width: 30%; }
 .cfg-desc { color: var(--gray-l); font-weight: 300; font-size: .95rem; margin-bottom: 1.75rem; }
 fieldset { border: none; margin-bottom: 1.6rem; }
+input[aria-invalid="true"] { border-color: #ff8a80 !important; }
+.field-err { color: #ff8a80; font-size: .82rem; margin-top: .4rem; }
 legend, .lbl { font-size: .8rem; font-weight: 600; color: var(--gray-l); margin-bottom: .6rem; display: block; }
 .opts { display: flex; flex-wrap: wrap; gap: .5rem; }
 .opt input { position: absolute; opacity: 0; pointer-events: none; }
@@ -161,7 +163,7 @@ textarea { min-height: 90px; resize: vertical; }
 .item { display: grid; grid-template-columns: 56px 1fr auto; gap: 1rem; align-items: start; padding: 1rem 0; border-bottom: 1px solid var(--line); }
 .item-art { width: 56px; height: 56px; border-radius: 10px; background: var(--panel-2); display: grid; place-items: center; }
 .item-art svg { width: 70%; }
-.item h4 { font-size: .95rem; font-weight: 700; }
+.item h3 { font-size: .95rem; font-weight: 700; }
 .item ul { list-style: none; color: var(--gray); font-size: .82rem; margin-top: .2rem; }
 .rm { background: none; border: none; color: var(--gray); cursor: pointer; font-size: .8rem; text-decoration: underline; text-underline-offset: 3px; }
 .rm:hover { color: #ff8a80; }
@@ -290,6 +292,7 @@ footer.site-footer .sr { position: absolute; width: 1px; height: 1px; overflow: 
   </div>
 </header>
 
+<main id="inhalt">
 <section class="intro">
   <div class="kicker">Shop</div>
   <h1>Padel-Zubehör<br>mit eurem Logo</h1>
@@ -301,7 +304,9 @@ footer.site-footer .sr { position: absolute; width: 1px; height: 1px; overflow: 
   </div>
 </section>
 
-<main class="grid" id="grid"></main>
+<h2 class="sr">Produkte</h2>
+<div class="grid" id="grid"></div>
+</main>
 
 <footer class="site-footer">
   <div class="ft-grid">
@@ -337,17 +342,17 @@ footer.site-footer .sr { position: absolute; width: 1px; height: 1px; overflow: 
 <div class="scrim" id="scrim"></div>
 
 <!-- Configurator -->
-<aside class="panel" id="cfgPanel" role="dialog" aria-modal="true" aria-labelledby="cfgTitle">
+<div class="panel" id="cfgPanel" inert role="dialog" aria-modal="true" aria-labelledby="cfgTitle">
   <div class="panel-head"><h2 id="cfgTitle">Produkt</h2><button class="x" data-close aria-label="Schließen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div class="panel-body" id="cfgBody"></div>
   <div class="panel-foot"><button class="btn-main" id="addBtn">Zur Anfrage hinzufügen</button></div>
-</aside>
+</div>
 
 <!-- Request list -->
-<aside class="panel" id="listPanel" role="dialog" aria-modal="true" aria-labelledby="listTitle">
+<div class="panel" id="listPanel" inert role="dialog" aria-modal="true" aria-labelledby="listTitle">
   <div class="panel-head"><h2 id="listTitle">Eure Anfrage</h2><button class="x" data-close aria-label="Schließen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div class="panel-body" id="listBody"></div>
-</aside>
+</div>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -405,20 +410,33 @@ document.querySelectorAll('.card').forEach(c => io.observe(c));
 
 /* ---------- Panels ---------- */
 let lastFocus = null;
+const hintergrund = () => document.querySelectorAll('body > header, body > main, body > footer');
 function openPanel(id) {
   lastFocus = document.activeElement;
-  document.querySelectorAll('.panel').forEach(p => p.classList.toggle('on', p.id === id));
+  document.querySelectorAll('.panel').forEach(p => { p.classList.toggle('on', p.id === id); p.inert = p.id !== id; });
+  hintergrund().forEach(el => el.inert = true);
   $('scrim').classList.add('on'); document.body.classList.add('lock');
   setTimeout(() => $(id).querySelector('.x').focus(), 50);
 }
 function closePanels() {
-  document.querySelectorAll('.panel').forEach(p => p.classList.remove('on'));
+  if (!document.querySelector('.panel.on')) return;
+  document.querySelectorAll('.panel').forEach(p => { p.classList.remove('on'); p.inert = true; });
+  hintergrund().forEach(el => el.inert = false);
   $('scrim').classList.remove('on'); document.body.classList.remove('lock');
   if (lastFocus) lastFocus.focus();
 }
 $('scrim').addEventListener('click', closePanels);
 document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', closePanels));
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closePanels(); });
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closePanels();
+  const panel = document.querySelector('.panel.on');
+  if (e.key === 'Tab' && panel) {
+    const f = [...panel.querySelectorAll('button, a[href], input:not([type=hidden]):not([name=_gotcha]), textarea, select')].filter(x => !x.disabled && x.offsetParent !== null);
+    const i = f.indexOf(document.activeElement);
+    if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+    else if (!e.shiftKey && (i === -1 || i === f.length - 1)) { e.preventDefault(); f[0].focus(); }
+  }
+});
 
 /* ---------- Konfigurator ---------- */
 let aktiv = null;
@@ -448,7 +466,8 @@ function renderCfg() {
     <p class="hint" id="logoHint">Euer Logo schickt ihr uns nach der Anfrage einfach per E-Mail.</p>
     <div class="reveal-field" id="textField" hidden>
       <label class="lbl" for="wunschtext">Wunschtext (max. 20 Zeichen)</label>
-      <input type="text" id="wunschtext" maxlength="20" placeholder="z. B. Padel Club Münster">
+      <input type="text" id="wunschtext" maxlength="20" placeholder="z. B. Padel Club Münster" aria-describedby="wtErr">
+      <p class="field-err" id="wtErr" hidden>Bitte gebt euren Wunschtext ein.</p>
     </div></fieldset>
     <fieldset><legend>Menge</legend>
       <div class="qty"><button type="button" id="minus" aria-label="Weniger">−</button><input type="number" id="menge" value="${p.minMenge}" min="${p.minMenge}" aria-label="Menge"><button type="button" id="plus" aria-label="Mehr">+</button></div>
@@ -470,7 +489,7 @@ $('addBtn').addEventListener('click', () => {
   Object.keys(p.varianten).forEach(n => opts[n] = body.querySelector(`input[name="v-${n}"]:checked`).value);
   const pers = body.querySelector('input[name=pers]:checked').value;
   const text = $('wunschtext').value.trim();
-  if (pers === 'Wunschtext' && !text) { $('wunschtext').focus(); $('wunschtext').style.borderColor = '#ff8a80'; return; }
+  if (pers === 'Wunschtext' && !text) { const w = $('wunschtext'); w.setAttribute('aria-invalid', 'true'); $('wtErr').hidden = false; w.focus(); w.oninput = () => { w.removeAttribute('aria-invalid'); $('wtErr').hidden = true; }; return; }
   const menge = Math.max(p.minMenge, Math.round(+$('menge').value) || p.minMenge);
   anfrage.push({ id: p.id, name: p.name, art: p.art, opts, pers: pers === 'Wunschtext' ? `Wunschtext: „${text}“` : pers, menge, preis: p.preis });
   save(); updateCount(true); closePanels(); toast(`${p.name} zur Anfrage hinzugefügt`);
@@ -502,7 +521,7 @@ function renderList() {
     ${anfrage.map((a, i) => `
       <div class="item">
         <div class="item-art">${ART[a.art]}</div>
-        <div><h4>${esc(a.name)}</h4><ul>
+        <div><h3>${esc(a.name)}</h3><ul>
           <li>${a.menge} Stück</li>
           ${Object.entries(a.opts).map(([k, w]) => `<li>${esc(k)}: ${esc(w)}</li>`).join('')}
           <li>${esc(a.pers)}</li></ul></div>
@@ -532,7 +551,10 @@ async function senden(e) {
   const f = e.target, st = $('status'), btn = $('sendBtn');
   st.textContent = '';
   const el = f.elements, name = el['name'].value.trim(), club = el['club'].value.trim(), email = el['email'].value.trim();
-  if (!name || !club || !/^\S+@\S+\.\S+$/.test(email)) { st.textContent = 'Bitte Name, Club und eine gültige E-Mail-Adresse angeben.'; return; }
+  const fehler = [['name', !name], ['club', !club], ['email', !/^\S+@\S+\.\S+$/.test(email)]];
+  fehler.forEach(([n, bad]) => { const i = el[n]; if (bad) { i.setAttribute('aria-invalid', 'true'); i.setAttribute('aria-describedby', 'status'); i.addEventListener('input', () => { i.removeAttribute('aria-invalid'); i.removeAttribute('aria-describedby'); }, { once: true }); } });
+  const erstes = fehler.find(([, bad]) => bad);
+  if (erstes) { st.textContent = 'Bitte Name, Club und eine gültige E-Mail-Adresse angeben.'; el[erstes[0]].focus(); return; }
   const data = new FormData(f);
   data.append('_subject', `Neue Shop-Anfrage – ${club}`);
   data.append('anfrage', zusammenfassung());
@@ -567,7 +589,7 @@ updateCount();
 })();
 
 </script>
-<script src="/search.js?v=3" defer></script>
-<script src="/site.js?v=3" defer></script>
+<script src="/search.js?v=4" defer></script>
+<script src="/site.js?v=4" defer></script>
 </body>
 </html>
