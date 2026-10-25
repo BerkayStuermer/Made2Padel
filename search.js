@@ -51,7 +51,7 @@
 .s-field { display: flex; align-items: center; gap: .75rem; padding: 1rem 1.2rem; border-bottom: 1px solid #262626; }
 .s-field svg { width: 20px; height: 20px; flex: none; color: #C5E334; }
 .s-field input { flex: 1; min-width: 0; background: none; border: 0; outline: 0; color: #fff; font: inherit; font-size: 1.05rem; }
-.s-field input::placeholder { color: #777; }
+.s-field input::placeholder { color: #8a8a8a; }
 .s-field input::-webkit-search-cancel-button { display: none; }
 .s-close { background: none; border: 1px solid #333; color: #aaa; border-radius: 8px; font: inherit; font-size: .72rem; padding: .25rem .5rem; cursor: pointer; }
 .s-results { list-style: none; margin: 0; padding: .4rem; max-height: min(60vh, 460px); overflow-y: auto; }
@@ -63,7 +63,7 @@
   display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .s-results mark { background: none; color: #C5E334; }
 .s-empty { padding: 1.2rem 1rem; color: #9a9a9a; font-size: .9rem; }
-.s-hint { padding: .9rem 1rem 1rem; color: #777; font-size: .8rem; }
+.s-hint { padding: .9rem 1rem 1rem; color: #959595; font-size: .8rem; }
 .s-hint button { background: #1c1c1c; border: 1px solid #2c2c2c; color: #ddd; border-radius: 999px; font: inherit; font-size: .78rem; padding: .3rem .75rem; margin: .5rem .35rem 0 0; cursor: pointer; }
 .s-hint button:hover { border-color: #C5E334; }
 .s-flash { animation: sFlash 1.6s ease; border-radius: 6px; }
@@ -85,8 +85,9 @@
   const scrim = document.createElement('div'); scrim.className = 's-scrim';
   const box = document.createElement('div'); box.className = 's-box';
   box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', 'Suche');
-  box.innerHTML = `<div class="s-field">${ICON}<input type="search" id="site-search" name="search" role="searchbox" enterkeyhint="search" placeholder="Suchen, z. B. Lieferzeit, Logo, Kantenschutz" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-1p-ignore data-lpignore="true" aria-label="Suchbegriff" aria-controls="sResults"><button class="s-close" type="button">Esc</button></div><ul class="s-results" id="sResults" role="listbox"></ul>`;
+  box.innerHTML = `<div class="s-field">${ICON}<input type="search" id="site-search" name="search" role="searchbox" enterkeyhint="search" placeholder="Suchen, z. B. Lieferzeit, Logo, Kantenschutz" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" data-1p-ignore data-lpignore="true" aria-label="Suchbegriff" aria-controls="sResults"><button class="s-close" type="button">Esc</button></div><ul class="s-results" id="sResults" aria-label="Suchergebnisse"></ul>`;
   document.body.append(scrim, box);
+  box.inert = true;
   const input = box.querySelector('input');
   const list = box.querySelector('.s-results');
   const btn = document.getElementById('searchBtn');
@@ -178,7 +179,7 @@
       list.innerHTML = `<li class="s-empty">Keine Treffer für „${esc(input.value.trim())}“. Schreibt uns gern an <a href="mailto:info@made2padel.de" style="color:#C5E334">info@made2padel.de</a>.</li>`;
       return;
     }
-    list.innerHTML = top.map((h, i) => `<li role="option"><a href="${h.e.url}" data-i="${i}"><span class="s-where">${esc(h.e.seite)}</span><span class="s-t">${mark(h.e.t, words)}</span>${h.e.d ? `<span class="s-d">${mark(h.e.d, words)}</span>` : ''}</a></li>`).join('');
+    list.innerHTML = top.map((h, i) => `<li><a href="${h.e.url}" data-i="${i}"><span class="s-where">${esc(h.e.seite)}</span><span class="s-t">${mark(h.e.t, words)}</span>${h.e.d ? `<span class="s-d">${mark(h.e.d, words)}</span>` : ''}</a></li>`).join('');
   }
   function setActive(i) {
     const links = list.querySelectorAll('a[data-i]'); if (!links.length) return;
@@ -190,12 +191,14 @@
   /* ---------- Öffnen / Schließen ---------- */
   function open() {
     lastFocus = document.activeElement;
+    box.inert = false;
     scrim.classList.add('on'); box.classList.add('on');
     if (btn) btn.setAttribute('aria-expanded', 'true');
     render(); setTimeout(() => input.focus(), 30);
     load().then(render);
   }
   function close() {
+    box.inert = true;
     scrim.classList.remove('on'); box.classList.remove('on');
     if (btn) btn.setAttribute('aria-expanded', 'false');
     if (lastFocus && lastFocus.focus) lastFocus.focus();
@@ -216,7 +219,13 @@
     const isOpen = box.classList.contains('on');
     if (!isOpen && e.key === '/' && !/^(INPUT|TEXTAREA|SELECT)$/.test(document.activeElement.tagName)) { e.preventDefault(); open(); return; }
     if (!isOpen) return;
-    if (e.key === 'Escape') { e.preventDefault(); close(); }
+    if (e.key === 'Tab') {
+      const f = [...box.querySelectorAll('input, button, a[href]')].filter(x => x.offsetParent !== null);
+      const i = f.indexOf(document.activeElement);
+      if (e.shiftKey && i <= 0) { e.preventDefault(); f[f.length - 1].focus(); }
+      else if (!e.shiftKey && (i === -1 || i === f.length - 1)) { e.preventDefault(); f[0].focus(); }
+    }
+    else if (e.key === 'Escape') { e.preventDefault(); close(); }
     else if (e.key === 'ArrowDown') { e.preventDefault(); setActive(active + 1); }
     else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(active - 1); }
     else if (e.key === 'Enter' && document.activeElement === input) {
