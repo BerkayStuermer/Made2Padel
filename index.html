@@ -57,13 +57,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
   outline: 2px solid var(--lime); outline-offset: 3px;
 }
 
-/* ---------- Scroll progress ---------- */
-.progress {
-  position: fixed; top: 0; left: 0; height: 3px; width: 100%;
-  background: var(--lime); transform-origin: left; transform: scaleX(0);
-  z-index: 200;
-}
-
 /* ---------- Nav ---------- */
 nav {
   position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -423,7 +416,6 @@ footer.site-footer .sr { position: absolute; width: 1px; height: 1px; overflow: 
 </head>
 <body>
 
-<div class="progress" id="progress"></div>
 
 <nav id="nav">
   <div class="nav-inner">
@@ -655,7 +647,6 @@ footer.site-footer .sr { position: absolute; width: 1px; height: 1px; overflow: 
   document.querySelectorAll('.b-item').forEach(el => bio.observe(el));
 
   const nav = document.getElementById('nav');
-  const bar = document.getElementById('progress');
   const steps = document.getElementById('steps');
   const stepsFill = document.getElementById('stepsFill');
   const stepItems = document.querySelectorAll('.step-item');
@@ -666,7 +657,6 @@ footer.site-footer .sr { position: absolute; width: 1px; height: 1px; overflow: 
   function onScroll() {
     const y = window.scrollY, vh = window.innerHeight;
     const max = document.documentElement.scrollHeight - vh;
-    bar.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
     nav.classList.toggle('scrolled', y > 30);
 
     /* steps line */
